@@ -1,0 +1,206 @@
+[
+    {
+        "merged": "D:\\high_dip to university\\sem3\\Assignment\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xhdpi_ic_launcher_round.png.flat",
+        "source": "D:\\high_dip to university\\sem3\\Assignment\\app\\src\\main\\res\\mipmap-xhdpi\\ic_launcher_round.png"
+    },
+    {
+        "merged": "D:\\high_dip to university\\sem3\\Assignment\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-mdpi_ic_launcher.png.flat",
+        "source": "D:\\high_dip to university\\sem3\\Assignment\\app\\src\\main\\res\\mipmap-mdpi\\ic_launcher.png"
+    },
+    {
+        "merged": "D:\\high_dip to university\\sem3\\Assignment\\app\\build\\intermediates\\res\\merged\\debug\\drawable_ic_baseline_play_arrow_24.xml.flat",
+        "source": "D:\\high_dip to university\\sem3\\Assignment\\app\\src\\main\\res\\drawable\\ic_baseline_play_arrow_24.xml"
+    },
+    {
+        "merged": "D:\\high_dip to university\\sem3\\Assignment\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_main.xml.flat",
+        "source": "D:\\high_dip to university\\sem3\\Assignment\\app\\src\\main\\res\\layout\\activity_main.xml"
+    },
+    {
+        "merged": "D:\\high_dip to university\\sem3\\Assignment\\app\\build\\intermediates\\res\\merged\\debug\\layout_listitems.xml.flat",
+        "source": "D:\\high_dip to university\\sem3\\Assignment\\app\\src\\main\\res\\layout\\listitems.xml"
+    },
+    {
+        "merged": "D:\\high_dip to university\\sem3\\Assignment\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-anydpi-v26_ic_launcher_round.xml.flat",
+        "source": "D:\\high_dip to university\\sem3\\Assignment\\app\\src\\main\\res\\mipmap-anydpi-v26\\ic_launcher_round.xml"
+    },
+    {
+        "merged": "D:\\high_dip to university\\sem3\\Assignment\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_mainbg.png.flat",
+        "source": "D:\\high_dip to university\\sem3\\Assignment\\app\\src\\main\\res\\drawable-xxhdpi\\mainbg.png"
+    },
+    {
+        "merged": "D:\\high_dip to university\\sem3\\Assignment\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-mdpi_ic_launcher_round.png.flat",
+        "source": "D:\\high_dip to university\\sem3\\Assignment\\app\\src\\main\\res\\mipmap-mdpi\\ic_launcher_round.png"
+    },
+    {
+        "merged": "D:\\high_dip to university\\sem3\\Assignment\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_blackboard.png.flat",
+        "source": "D:\\high_dip to university\\sem3\\Assignment\\app\\src\\main\\res\\drawable-xxhdpi\\blackboard.png"
+    },
+    {
+        "merged": "D:\\high_dip to university\\sem3\\Assignment\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi_ic_launcher_round.png.flat",
+        "source": "D:\\high_dip to university\\sem3\\Assignment\\app\\src\\main\\res\\mipmap-hdpi\\ic_launcher_round.png"
+    },
+    {
+        "merged": "D:\\high_dip to university\\sem3\\Assignment\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xhdpi_ic_launcher.png.flat",
+        "source": "D:\\high_dip to university\\sem3\\Assignment\\app\\src\\main\\res\\mipmap-xhdpi\\ic_launcher.png"
+    },
+    {
+        "merged": "D:\\high_dip to university\\sem3\\Assignment\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_scbg.png.flat",
+        "source": "D:\\high_dip to university\\sem3\\Assignment\\app\\src\\main\\res\\drawable-xxhdpi\\scbg.png"
+    },
+    {
+        "merged": "D:\\high_dip to university\\sem3\\Assignment\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxhdpi_ic_launcher.png.flat",
+        "source": "D:\\high_dip to university\\sem3\\Assignment\\app\\src\\main\\res\\mipmap-xxhdpi\\ic_launcher.png"
+    },
+    {
+        "merged": "D:\\high_dip to university\\sem3\\Assignment\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxxhdpi_ic_launcher_round.png.flat",
+        "source": "D:\\high_dip to university\\sem3\\Assignment\\app\\src\\main\\res\\mipmap-xxxhdpi\\ic_launcher_round.png"
+    },
+    {
+        "merged": "D:\\high_dip to university\\sem3\\Assignment\\app\\build\\intermediates\\res\\merged\\debug\\drawable_ic_baseline_warning_24.xml.flat",
+        "source": "D:\\high_dip to university\\sem3\\Assignment\\app\\src\\main\\res\\drawable\\ic_baseline_warning_24.xml"
+    },
+    {
+        "merged": "D:\\high_dip to university\\sem3\\Assignment\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxxhdpi_ic_launcher.png.flat",
+        "source": "D:\\high_dip to university\\sem3\\Assignment\\app\\src\\main\\res\\mipmap-xxxhdpi\\ic_launcher.png"
+    },
+    {
+        "merged": "D:\\high_dip to university\\sem3\\Assignment\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_iqtest.xml.flat",
+        "source": "D:\\high_dip to university\\sem3\\Assignment\\app\\src\\main\\res\\layout\\activity_iqtest.xml"
+    },
+    {
+        "merged": "D:\\high_dip to university\\sem3\\Assignment\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_testbg.jpg.flat",
+        "source": "D:\\high_dip to university\\sem3\\Assignment\\app\\src\\main\\res\\drawable-xxhdpi\\testbg.jpg"
+    },
+    {
+        "merged": "D:\\high_dip to university\\sem3\\Assignment\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_podium.png.flat",
+        "source": "D:\\high_dip to university\\sem3\\Assignment\\app\\src\\main\\res\\drawable-xxhdpi\\podium.png"
+    },
+    {
+        "merged": "D:\\high_dip to university\\sem3\\Assignment\\app\\build\\intermediates\\res\\merged\\debug\\font_kgcandy.ttf.flat",
+        "source": "D:\\high_dip to university\\sem3\\Assignment\\app\\src\\main\\res\\font\\kgcandy.ttf"
+    },
+    {
+        "merged": "D:\\high_dip to university\\sem3\\Assignment\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_finishtitle.png.flat",
+        "source": "D:\\high_dip to university\\sem3\\Assignment\\app\\src\\main\\res\\drawable-xxhdpi\\finishtitle.png"
+    },
+    {
+        "merged": "D:\\high_dip to university\\sem3\\Assignment\\app\\build\\intermediates\\res\\merged\\debug\\drawable_ic_baseline_face_24.xml.flat",
+        "source": "D:\\high_dip to university\\sem3\\Assignment\\app\\src\\main\\res\\drawable\\ic_baseline_face_24.xml"
+    },
+    {
+        "merged": "D:\\high_dip to university\\sem3\\Assignment\\app\\build\\intermediates\\res\\merged\\debug\\drawable_ic_launcher_background.xml.flat",
+        "source": "D:\\high_dip to university\\sem3\\Assignment\\app\\src\\main\\res\\drawable\\ic_launcher_background.xml"
+    },
+    {
+        "merged": "D:\\high_dip to university\\sem3\\Assignment\\app\\build\\intermediates\\res\\merged\\debug\\anim_imagebtn.xml.flat",
+        "source": "D:\\high_dip to university\\sem3\\Assignment\\app\\src\\main\\res\\anim\\imagebtn.xml"
+    },
+    {
+        "merged": "D:\\high_dip to university\\sem3\\Assignment\\app\\build\\intermediates\\res\\merged\\debug\\drawable_custombtn2.xml.flat",
+        "source": "D:\\high_dip to university\\sem3\\Assignment\\app\\src\\main\\res\\drawable\\custombtn2.xml"
+    },
+    {
+        "merged": "D:\\high_dip to university\\sem3\\Assignment\\app\\build\\intermediates\\res\\merged\\debug\\drawable_ic_baseline_bar_chart_24.xml.flat",
+        "source": "D:\\high_dip to university\\sem3\\Assignment\\app\\src\\main\\res\\drawable\\ic_baseline_bar_chart_24.xml"
+    },
+    {
+        "merged": "D:\\high_dip to university\\sem3\\Assignment\\app\\build\\intermediates\\res\\merged\\debug\\drawable_custom_button.xml.flat",
+        "source": "D:\\high_dip to university\\sem3\\Assignment\\app\\src\\main\\res\\drawable\\custom_button.xml"
+    },
+    {
+        "merged": "D:\\high_dip to university\\sem3\\Assignment\\app\\build\\intermediates\\res\\merged\\debug\\layout_splash.xml.flat",
+        "source": "D:\\high_dip to university\\sem3\\Assignment\\app\\src\\main\\res\\layout\\splash.xml"
+    },
+    {
+        "merged": "D:\\high_dip to university\\sem3\\Assignment\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_scoreboard.xml.flat",
+        "source": "D:\\high_dip to university\\sem3\\Assignment\\app\\src\\main\\res\\layout\\activity_scoreboard.xml"
+    },
+    {
+        "merged": "D:\\high_dip to university\\sem3\\Assignment\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_scoreboardbg.png.flat",
+        "source": "D:\\high_dip to university\\sem3\\Assignment\\app\\src\\main\\res\\drawable-xxhdpi\\scoreboardbg.png"
+    },
+    {
+        "merged": "D:\\high_dip to university\\sem3\\Assignment\\app\\build\\intermediates\\res\\merged\\debug\\drawable_ic_percentage.xml.flat",
+        "source": "D:\\high_dip to university\\sem3\\Assignment\\app\\src\\main\\res\\drawable\\ic_percentage.xml"
+    },
+    {
+        "merged": "D:\\high_dip to university\\sem3\\Assignment\\app\\build\\intermediates\\res\\merged\\debug\\drawable_circle.xml.flat",
+        "source": "D:\\high_dip to university\\sem3\\Assignment\\app\\src\\main\\res\\drawable\\circle.xml"
+    },
+    {
+        "merged": "D:\\high_dip to university\\sem3\\Assignment\\app\\build\\intermediates\\res\\merged\\debug\\drawable_ic_podium.xml.flat",
+        "source": "D:\\high_dip to university\\sem3\\Assignment\\app\\src\\main\\res\\drawable\\ic_podium.xml"
+    },
+    {
+        "merged": "D:\\high_dip to university\\sem3\\Assignment\\app\\build\\intermediates\\res\\merged\\debug\\drawable_ic_numbers.xml.flat",
+        "source": "D:\\high_dip to university\\sem3\\Assignment\\app\\src\\main\\res\\drawable\\ic_numbers.xml"
+    },
+    {
+        "merged": "D:\\high_dip to university\\sem3\\Assignment\\app\\build\\intermediates\\res\\merged\\debug\\drawable_ic_clean.xml.flat",
+        "source": "D:\\high_dip to university\\sem3\\Assignment\\app\\src\\main\\res\\drawable\\ic_clean.xml"
+    },
+    {
+        "merged": "D:\\high_dip to university\\sem3\\Assignment\\app\\build\\intermediates\\res\\merged\\debug\\drawable_ic_database.xml.flat",
+        "source": "D:\\high_dip to university\\sem3\\Assignment\\app\\src\\main\\res\\drawable\\ic_database.xml"
+    },
+    {
+        "merged": "D:\\high_dip to university\\sem3\\Assignment\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-anydpi-v26_ic_launcher.xml.flat",
+        "source": "D:\\high_dip to university\\sem3\\Assignment\\app\\src\\main\\res\\mipmap-anydpi-v26\\ic_launcher.xml"
+    },
+    {
+        "merged": "D:\\high_dip to university\\sem3\\Assignment\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxhdpi_ic_launcher_round.png.flat",
+        "source": "D:\\high_dip to university\\sem3\\Assignment\\app\\src\\main\\res\\mipmap-xxhdpi\\ic_launcher_round.png"
+    },
+    {
+        "merged": "D:\\high_dip to university\\sem3\\Assignment\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_main.png.flat",
+        "source": "D:\\high_dip to university\\sem3\\Assignment\\app\\src\\main\\res\\drawable-xxhdpi\\main.png"
+    },
+    {
+        "merged": "D:\\high_dip to university\\sem3\\Assignment\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi_ic_launcher.png.flat",
+        "source": "D:\\high_dip to university\\sem3\\Assignment\\app\\src\\main\\res\\mipmap-hdpi\\ic_launcher.png"
+    },
+    {
+        "merged": "D:\\high_dip to university\\sem3\\Assignment\\app\\build\\intermediates\\res\\merged\\debug\\font_double_bubble_shadow.otf.flat",
+        "source": "D:\\high_dip to university\\sem3\\Assignment\\app\\src\\main\\res\\font\\double_bubble_shadow.otf"
+    },
+    {
+        "merged": "D:\\high_dip to university\\sem3\\Assignment\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_board.jpg.flat",
+        "source": "D:\\high_dip to university\\sem3\\Assignment\\app\\src\\main\\res\\drawable-xxhdpi\\board.jpg"
+    },
+    {
+        "merged": "D:\\high_dip to university\\sem3\\Assignment\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_chart.xml.flat",
+        "source": "D:\\high_dip to university\\sem3\\Assignment\\app\\src\\main\\res\\layout\\activity_chart.xml"
+    },
+    {
+        "merged": "D:\\high_dip to university\\sem3\\Assignment\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_db.xml.flat",
+        "source": "D:\\high_dip to university\\sem3\\Assignment\\app\\src\\main\\res\\layout\\activity_db.xml"
+    },
+    {
+        "merged": "D:\\high_dip to university\\sem3\\Assignment\\app\\build\\intermediates\\res\\merged\\debug\\drawable-v24_ic_launcher_foreground.xml.flat",
+        "source": "D:\\high_dip to university\\sem3\\Assignment\\app\\src\\main\\res\\drawable-v24\\ic_launcher_foreground.xml"
+    },
+    {
+        "merged": "D:\\high_dip to university\\sem3\\Assignment\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_questionbg.jpg.flat",
+        "source": "D:\\high_dip to university\\sem3\\Assignment\\app\\src\\main\\res\\drawable-xxhdpi\\questionbg.jpg"
+    },
+    {
+        "merged": "D:\\high_dip to university\\sem3\\Assignment\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_math_iq.png.flat",
+        "source": "D:\\high_dip to university\\sem3\\Assignment\\app\\src\\main\\res\\drawable-xxhdpi\\math_iq.png"
+    },
+    {
+        "merged": "D:\\high_dip to university\\sem3\\Assignment\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_finish.xml.flat",
+        "source": "D:\\high_dip to university\\sem3\\Assignment\\app\\src\\main\\res\\layout\\activity_finish.xml"
+    },
+    {
+        "merged": "D:\\high_dip to university\\sem3\\Assignment\\app\\build\\intermediates\\res\\merged\\debug\\font_vtks_chalk_79.ttf.flat",
+        "source": "D:\\high_dip to university\\sem3\\Assignment\\app\\src\\main\\res\\font\\vtks_chalk_79.ttf"
+    },
+    {
+        "merged": "D:\\high_dip to university\\sem3\\Assignment\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_titlevector16.jpg.flat",
+        "source": "D:\\high_dip to university\\sem3\\Assignment\\app\\src\\main\\res\\drawable-xxhdpi\\titlevector16.jpg"
+    },
+    {
+        "merged": "D:\\high_dip to university\\sem3\\Assignment\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_title_scoreboard.png.flat",
+        "source": "D:\\high_dip to university\\sem3\\Assignment\\app\\src\\main\\res\\drawable-xxhdpi\\title_scoreboard.png"
+    }
+]

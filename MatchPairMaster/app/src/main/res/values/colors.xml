@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#6200EE</color>
+    <color name="colorPrimaryDark">#3700B3</color>
+    <color name="colorAccent">#03DAC5</color>
+    <color name="itemBackground1">#F9D08C</color>
+    <color name="itemBackground2">#8C9BF3</color>
+    <color name="itemBackground3">#F48280</color>
+    <color name="itemBackground4">#51A8DD</color>
+    <color name="itemFontColor">#FFFFFF</color>
+    <color name="wrong">#734338</color>
+    <color name="right">#86C166</color>
+    <color name="ring">#FDECF0</color>
+</resources>
