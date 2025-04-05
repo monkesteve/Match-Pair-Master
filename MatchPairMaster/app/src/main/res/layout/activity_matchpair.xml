@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.02"
+        android:id="@+id/tvPlayer"
+        android:gravity="center"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:background="@drawable/titlevector16"
+        android:layout_weight="0.05">
+
+        <TextView
+            android:id="@+id/tvMoves"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.6"
+            android:fontFamily="@font/double_bubble_shadow"
+            android:gravity="center|center_vertical"
+            android:paddingTop="10dp"
+            android:text="1"
+            android:textColor="#FBE251"
+            android:textSize="16pt"
+            />
+
+
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0px"
+        android:orientation="vertical"
+        android:layout_weight="1.5"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:paddingBottom="10dp"
+        android:paddingTop="10dp"
+        android:background="@drawable/testbg">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_horizontal"
+            >
+            <ImageButton
+                android:layout_width="150dp"
+                android:layout_height="160dp"
+                android:id="@+id/A1"
+                android:theme="@style/testBtn"
+                android:layout_marginRight="10dp"
+                android:onClick="ansClick"
+                android:scaleType="centerInside"
+                android:padding="20dp"
+                />
+            <ImageButton
+                android:layout_width="150dp"
+                android:layout_height="160dp"
+                android:id="@+id/A2"
+                android:theme="@style/testBtn"
+                android:textColor="#FFFFFF"
+                android:layout_marginBottom="10dp"
+                android:onClick="ansClick"
+                android:scaleType="centerInside"
+                android:padding="20dp"/>
+
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_horizontal"
+            >
+            <ImageButton
+                android:layout_width="150dp"
+                android:layout_height="160dp"
+                android:id="@+id/A3"
+                android:theme="@style/testBtn"
+                android:textColor="#FFFFFF"
+                android:layout_marginRight="10dp"
+                android:onClick="ansClick"
+                android:scaleType="centerInside"
+                android:padding="20dp"/>
+            <ImageButton
+                android:layout_width="150dp"
+                android:layout_height="160dp"
+                android:id="@+id/A4"
+                android:theme="@style/testBtn"
+                android:textColor="#FFFFFF"
+                android:layout_marginBottom="10dp"
+                android:onClick="ansClick"
+                android:scaleType="centerInside"
+                android:padding="20dp"/>
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_horizontal"
+            >
+            <ImageButton
+                android:layout_width="150dp"
+                android:layout_height="160dp"
+                android:id="@+id/A5"
+                android:theme="@style/testBtn"
+                android:textColor="#FFFFFF"
+                android:layout_marginRight="10dp"
+                android:onClick="ansClick"
+                android:scaleType="centerInside"
+                android:padding="20dp"/>
+            <ImageButton
+                android:layout_width="150dp"
+                android:layout_height="160dp"
+                android:id="@+id/A6"
+                android:theme="@style/testBtn"
+                android:textColor="#FFFFFF"
+                android:layout_marginBottom="10dp"
+                android:onClick="ansClick"
+                android:scaleType="centerInside"
+                android:padding="20dp"/>
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_horizontal"
+            >
+            <ImageButton
+                android:layout_width="150dp"
+                android:layout_height="160dp"
+                android:id="@+id/A7"
+                android:theme="@style/testBtn"
+                android:textColor="#FFFFFF"
+                android:layout_marginRight="10dp"
+                android:onClick="ansClick"
+                android:scaleType="centerInside"
+                android:padding="20dp"/>
+            <ImageButton
+                android:layout_width="150dp"
+                android:layout_height="160dp"
+                android:id="@+id/A8"
+                android:theme="@style/testBtn"
+                android:textColor="#FFFFFF"
+                android:layout_marginBottom="10dp"
+                android:onClick="ansClick"
+                android:scaleType="centerInside"
+                android:padding="20dp"/>
+
+        </LinearLayout>
+    </LinearLayout>
+
+
+</LinearLayout>
