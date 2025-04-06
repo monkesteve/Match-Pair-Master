@@ -45,7 +45,6 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 public class MatchPair extends AppCompatActivity{
-    DataBase db;
     LocalTime questionStart;
     LocalDate startDate;
     String playerName;
@@ -77,11 +76,6 @@ public class MatchPair extends AppCompatActivity{
                 WindowManager.LayoutParams.FLAG_FULLSCREEN); //enable full screen
         setContentView(R.layout.activity_matchpair);
 
-
-
-
-        db = new DataBase();
-        testNo = db.getMaximumTestNo();
         questionStart = LocalTime.now();
         startDate = LocalDate.now();
         local = getIntent();
@@ -223,7 +217,6 @@ public class MatchPair extends AppCompatActivity{
         intent.putExtra("duration", duration);
         intent.putExtra("date", convertToDateViaInstant(startDate).toString());
         startActivity(intent);
-        db.close();
         finish();
     }
 

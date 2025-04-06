@@ -28,9 +28,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         start = findViewById(R.id.start);
         DataBase db = new DataBase();
-        db.dropTable();
         db.createTLTD();
-
     }
 
     public void start(final View view){
@@ -42,11 +40,6 @@ public class MainActivity extends AppCompatActivity {
         final EditText input = new EditText(MainActivity.this);
         input.setSingleLine(true);
 
-
-//        LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(
-//                LinearLayout.LayoutParams.MATCH_PARENT,
-//                LinearLayout.LayoutParams.MATCH_PARENT);
-//        input.setLayoutParams(lp);
         alertDialog.setView(input);
         alertDialog.setIcon(R.drawable.ic_baseline_face_24);
 
@@ -59,7 +52,8 @@ public class MainActivity extends AppCompatActivity {
                             myIntent1.putExtra("playerName",playerName);
                             startActivity(myIntent1);
                         }else {
-                            Toast.makeText(MainActivity.this, "Invalid player name! \nPlease enter text within 3 to 12 character!", Toast.LENGTH_LONG).show();
+                            Toast.makeText(MainActivity.this, "Invalid player name! \n" +
+                                    "Please enter text within 3 to 12 character!", Toast.LENGTH_LONG).show();
                         }
                     }
                 });
@@ -74,7 +68,6 @@ public class MainActivity extends AppCompatActivity {
 
     public void textlog(View v){
         v.startAnimation(AnimationUtils.loadAnimation(this, R.anim.imagebtn));
-        Intent myIntent = new Intent(MainActivity.this, TestsLog.class);
-        startActivity(myIntent);
+        Toast.makeText(MainActivity.this, "To be implemented", Toast.LENGTH_LONG).show();
     }
 }

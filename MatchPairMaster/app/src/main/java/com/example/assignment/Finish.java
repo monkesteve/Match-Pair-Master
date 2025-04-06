@@ -61,6 +61,6 @@ public class Finish extends AppCompatActivity {
         v.startAnimation(AnimationUtils.loadAnimation(this, R.anim.imagebtn));
         Intent intent = new Intent(Finish.this, ScoreBoard.class);
         startActivity(intent);
-        finish();
+//        finish();
     }
 }

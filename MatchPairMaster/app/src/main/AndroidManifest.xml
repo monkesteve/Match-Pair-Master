@@ -21,7 +21,6 @@
         <activity android:name=".MatchPair" />
         <activity android:name=".Finish" />
         <activity android:name=".ScoreBoard" />
-        <activity android:name=".TestsLog" />
 
         <meta-data
             android:name="preloaded_fonts"

@@ -12,11 +12,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-public class Create extends AppCompatActivity implements OnDownloadFinishListener {
-    DataBase db;
+public class Create extends AppCompatActivity {
     String result;
     String playerName;
-    MyAsyncTask task = null;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,46 +25,10 @@ public class Create extends AppCompatActivity implements OnDownloadFinishListene
         setContentView(R.layout.splash);
         Intent intent = getIntent();
         playerName = intent.getStringExtra("playerName");
-        db = new DataBase();
 
-//        getData();
         Intent myIntent = new Intent(this, MatchPair.class);
         myIntent.putExtra("playerName", this.playerName);
         startActivity(myIntent);
         finish();
-    }
-
-    public void getData(){
-        if (task == null || task.getStatus().equals(AsyncTask.Status.FINISHED)) {
-            task = new MyAsyncTask();
-            task.setOnDownloadFinishListener(this);
-            task.execute();
-        }
-    }
-
-    @Override
-    public void updateDownloadResult(String result) {
-        // do in background by Asynctask
-        this.result = result;
-        try{
-            JSONArray arr = new JSONArray(result);
-            String[] players = new String[5];
-            int[] Moves = new int[5];
-            for(int i = 0; i < 5; i++){
-                players[i] = arr.getJSONObject(i).getString("Name");
-                Moves[i] = arr.getJSONObject(i).getInt("Moves");
-            }
-
-            // initial Data Base
-            for(int i = 0; i < players.length; i++){
-                db.insertTestLog(players[i], Moves[i]);
-            }
-            Intent myIntent = new Intent(this, MatchPair.class);
-            myIntent.putExtra("playerName", this.playerName);
-            startActivity(myIntent);
-            finish();
-        }catch (Exception e){
-            result = e.getMessage();
-        }
     }
 }

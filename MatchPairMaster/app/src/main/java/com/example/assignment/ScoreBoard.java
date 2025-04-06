@@ -34,7 +34,6 @@ public class ScoreBoard extends AppCompatActivity{
 
     public void initiate(){
         db = new DataBase();
-
         dataArray = db.getTestRecord();
 
         recycler_view = findViewById(R.id.rV);
