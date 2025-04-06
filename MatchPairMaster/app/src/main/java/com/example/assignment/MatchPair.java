@@ -44,7 +44,7 @@ import androidx.core.content.ContextCompat;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-public class MatchPair extends AppCompatActivity{
+public class MatchPair extends BaseActivity {
     LocalTime questionStart;
     LocalDate startDate;
     String playerName;

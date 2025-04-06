@@ -13,7 +13,7 @@ import android.view.animation.AnimationUtils;
 import android.widget.*;
 import android.view.View;
 
-public class ScoreBoard extends AppCompatActivity{
+public class ScoreBoard extends BaseActivity {
     private boolean stateChanged;
     TextView selection;
     RecyclerView recycler_view;

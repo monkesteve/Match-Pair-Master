@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
@@ -15,9 +16,10 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends BaseActivity {
 
     Button start;
+    Intent foregroundServiceIntent;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -29,6 +31,34 @@ public class MainActivity extends AppCompatActivity {
         start = findViewById(R.id.start);
         DataBase db = new DataBase();
         db.createTLTD();
+
+        foregroundServiceIntent = new Intent(this, ForegroundService.class);
+        startForegroundService();
+
+        sendAppStateToService("APP_OPENED");
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        // App is visible again
+        sendAppStateToService("APP_OPENED");
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        // This will be called when app goes to background
+        sendAppStateToService("APP_CLOSED");
+    }
+
+    private void startForegroundService() {
+        // Use startForegroundService for Android O and above
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            startForegroundService(foregroundServiceIntent);
+        } else {
+            startService(foregroundServiceIntent);
+        }
     }
 
     public void start(final View view){
@@ -69,5 +99,10 @@ public class MainActivity extends AppCompatActivity {
     public void textlog(View v){
         v.startAnimation(AnimationUtils.loadAnimation(this, R.anim.imagebtn));
         Toast.makeText(MainActivity.this, "To be implemented", Toast.LENGTH_LONG).show();
+    }
+
+    public void testNotif(View v){
+        v.startAnimation(AnimationUtils.loadAnimation(this, R.anim.imagebtn));
+        startForegroundService();
     }
 }

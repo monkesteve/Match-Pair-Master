@@ -17,7 +17,7 @@ import android.widget.TextView;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
-public class Finish extends AppCompatActivity {
+public class Finish extends BaseActivity {
 
     TextView tvCong, tvResult;
     String playerName;

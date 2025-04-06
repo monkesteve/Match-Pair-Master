@@ -12,7 +12,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-public class Create extends AppCompatActivity {
+public class Create extends BaseActivity {
     String result;
     String playerName;
     @Override

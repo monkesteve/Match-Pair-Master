@@ -12,7 +12,7 @@ import java.text.SimpleDateFormat;
 import java.time.LocalTime;
 import java.util.Date;
 
-public class DataBase extends AppCompatActivity {
+public class DataBase {
 
     // varible dictionary
     private final String TABLE_NAME_TL = "TestsLog";
