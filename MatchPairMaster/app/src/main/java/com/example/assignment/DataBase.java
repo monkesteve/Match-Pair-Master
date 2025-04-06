@@ -28,6 +28,48 @@ public class DataBase extends AppCompatActivity {
         db = SQLiteDatabase.openDatabase("/data/data/com.example.assignment/MatchPair", null, SQLiteDatabase.CREATE_IF_NECESSARY);
     }
 
+    public void updateTestLog(int testNo, double duration, int moves){
+        sql = "UPDATE "+TABLE_NAME_TL+" SET duration ="+duration+", moves ="+moves+" WHERE testNo ="+testNo+";";
+        db.execSQL(sql);
+    }
+
+    public void insertTestLog(int testNo, String playerName, String testDate,double duration, int moves){
+        // insert into TestLog
+        sql = "INSERT INTO "+TABLE_NAME_TL+"(testNo, playerName, testDate, duration, moves) VALUES" +
+                "("+testNo+",'"+playerName+"','"+testDate+"','"+duration+"',"+moves+");";
+        db.execSQL(sql);
+    }
+    public void insertTestLog(String playerName, String testDate,double duration, int moves){
+        // insert into TestLog
+        int testNo = getMaximumTestNo()+1;
+        sql = "INSERT INTO "+TABLE_NAME_TL+"(testNo, playerName, testDate, duration, moves) VALUES" +
+                "("+testNo+",'"+playerName+"','"+testDate+"','"+duration+"',"+moves+");";
+        db.execSQL(sql);
+    }
+
+    public void insertTestLog(String playerName, int moves){
+        int testNo = getMaximumTestNo()+1;
+        String[][] record = getTestRecord();
+        for(int i = 0; i < record.length; i++){
+            if(playerName.equals(record[i][1])){
+                return;
+            }
+        }
+        sql = "INSERT INTO "+TABLE_NAME_TL+"(testNo, playerName, moves) VALUES" +
+                "("+testNo+",'"+playerName+"',"+moves+");";
+        db.execSQL(sql);
+    }
+
+    public int getMaximumTestNo(){
+        sql = "SELECT MAX(testNo) FROM "+TABLE_NAME_TL+";";
+        cursor = db.rawQuery(sql, null);
+        int maxNumber = 0;
+        if ((cursor.moveToFirst()) || !(cursor.getCount() ==0)){
+            maxNumber = cursor.getInt(0);
+        }
+        return maxNumber;
+    }
+
     public void createTLTD(){
         // create table TestLog and TestDetails
         sql = "CREATE TABLE IF NOT EXISTS "+TABLE_NAME_TL+"(" +

@@ -2,15 +2,15 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     android:background="#FDECF0"
+    android:orientation="vertical"
     android:padding="30dp">
 
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:src="@drawable/finishtitle"
-        android:layout_weight="0.4" />
+        android:layout_weight="0.4"
+        android:src="@drawable/finishtitle" />
 
     <RelativeLayout
         android:layout_width="wrap_content"
@@ -21,31 +21,30 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:src="@drawable/board" />
+
         <TextView
+            android:id="@+id/tvCong"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/tvCong"
-            android:gravity="center"
+            android:layout_marginTop="80dp"
             android:fontFamily="@font/vtks_chalk_79"
-            android:textSize="12pt"
+            android:gravity="center"
             android:text="123123123"
             android:textColor="#DB4D6D"
-            android:layout_marginTop="80dp"/>
+            android:textSize="12pt" />
 
         <TextView
             android:id="@+id/tvResult"
-            android:layout_marginTop="130dp"
-            android:fontFamily="@font/vtks_chalk_79"
-            android:textSize="9pt"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="130dp"
             android:layout_weight="1"
-            android:textColor="#DB4D6D"
+            android:fontFamily="@font/vtks_chalk_79"
             android:gravity="center_horizontal|top"
-            android:text="Your Score" />
-
+            android:text="Your Score"
+            android:textColor="#DB4D6D"
+            android:textSize="9pt" />
     </RelativeLayout>
-
 
 
     <ImageButton
@@ -55,16 +54,25 @@
         android:layout_marginTop="20dp"
         android:layout_marginBottom="0dp"
         android:onClick="goBack"
-        android:theme="@style/plainBtn"
-        android:src="@drawable/ic_baseline_play_arrow_24" />
+        android:src="@drawable/ic_baseline_play_arrow_24"
+        android:theme="@style/plainBtn" />
 
     <ImageButton
         android:layout_width="80dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_marginBottom="20dp"
         android:onClick="goScoreboard"
-        android:theme="@style/plainBtn"
-        android:src="@drawable/ic_podium" />
+        android:src="@drawable/ic_podium"
+        android:theme="@style/plainBtn" />
+
+    <ImageButton
+        android:id="@+id/imageButton"
+        android:layout_width="80dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginBottom="20dp"
+        android:onClick="goShare"
+        android:src="@drawable/baseline_share_24"
+        android:theme="@style/plainBtn" />
 
 </LinearLayout>

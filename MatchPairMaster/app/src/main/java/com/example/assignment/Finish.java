@@ -1,7 +1,10 @@
 package com.example.assignment;
 
+import android.content.ContentValues;
 import android.content.Intent;
+import android.database.Cursor;
 import android.media.MediaPlayer;
+import android.net.Uri;
 import android.os.Bundle;
 import android.provider.ContactsContract;
 import android.view.View;
@@ -62,5 +65,44 @@ public class Finish extends AppCompatActivity {
         Intent intent = new Intent(Finish.this, ScoreBoard.class);
         startActivity(intent);
 //        finish();
+    }
+
+    public void goShare(View v) {
+        v.startAnimation(AnimationUtils.loadAnimation(this, R.anim.imagebtn));
+
+        // Prepare content values for the provider
+        ContentValues values = new ContentValues();
+        values.put("playerName", playerName);
+        values.put("moves", result);
+        values.put("duration", duration);
+        values.put("testDate", date);
+
+        // Insert data into the content provider
+        Uri resultUri = getContentResolver().insert(GameResultProvider.CONTENT_URI, values);
+
+        // Query the content provider to get the data back (demonstrates the full content provider workflow)
+        Cursor cursor = getContentResolver().query(resultUri, null, null, null, null);
+
+        // Create share text using data from content provider
+        String shareBody;
+        if (cursor != null && cursor.moveToFirst()) {
+            String name = cursor.getString(cursor.getColumnIndex("playerName"));
+            int moves = cursor.getInt(cursor.getColumnIndex("moves"));
+            double time = cursor.getDouble(cursor.getColumnIndex("duration"));
+            shareBody = name + " has completed the Match Pair game in " + (int)time + " seconds with " + moves + " moves!";
+            cursor.close();
+        } else {
+            // Fallback if cursor fails
+            shareBody = "I have completed the Match Pair game in " + (int)duration + " seconds with " + result + " moves!";
+        }
+
+        // Create the share intent
+        Intent intent = new Intent(Intent.ACTION_SEND);
+        intent.setType("text/plain");
+        intent.putExtra(Intent.EXTRA_SUBJECT, "Match Pair Game");
+        intent.putExtra(Intent.EXTRA_TEXT, shareBody);
+
+        // Start the share activity
+        startActivity(Intent.createChooser(intent, "Share using"));
     }
 }
