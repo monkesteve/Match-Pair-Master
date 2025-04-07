@@ -32,7 +32,7 @@
             android:layout_marginEnd="53dp"
             android:fontFamily="@font/bowlby_one_sc"
             android:gravity="center"
-            android:text="MATCH PAIR MASTER"
+            android:text="MEMORY MASTER"
             android:textAlignment="center"
             android:textColor="#EEE"
             android:textSize="18pt" />
