@@ -192,14 +192,15 @@ public abstract class BaseActivity extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
 
-        // Register battery receiver
-        IntentFilter batteryFilter = new IntentFilter();
-        batteryFilter.addAction(BatteryLevelReceiver.ACTION_BATTERY_LOW);
-        batteryFilter.addAction(BatteryLevelReceiver.ACTION_BATTERY_OKAY);
-        registerReceiver(batteryReceiver, batteryFilter);
+        // Register for your custom battery actions
+        IntentFilter customBatteryFilter = new IntentFilter();
+        customBatteryFilter.addAction(BatteryLevelReceiver.ACTION_BATTERY_LOW);
+        customBatteryFilter.addAction(BatteryLevelReceiver.ACTION_BATTERY_OKAY);
+        registerReceiver(batteryReceiver, customBatteryFilter);
 
-        // Request current battery status
-        registerReceiver(null, new IntentFilter(Intent.ACTION_BATTERY_CHANGED));
+        // Register for system battery changes and get current battery level
+        IntentFilter batteryFilter = new IntentFilter(Intent.ACTION_BATTERY_CHANGED);
+        Intent batteryStatus = registerReceiver(new BatteryLevelReceiver(), batteryFilter);
     }
 
     protected void sendAppStateToService(String action) {

@@ -81,10 +81,7 @@ public class ForegroundService extends Service {
                     if (batteryLevel != -1) {
                         currentBatteryLevel = batteryLevel;
                         if (batteryLevel <= 20) {
-                            updateNotification("Battery low (" + batteryLevel + "%)! Please charge your device to continue playing.");
-                        } else if (!isAppInForeground) {
-                            // Only update if app is not in foreground
-                            updateNotification("We will remind you to play the game. Battery: " + batteryLevel + "%");
+                            updateNotification("BATTERY ALERT: " + batteryLevel + "% remaining. Please charge soon!");
                         }
                     }
                     break;
