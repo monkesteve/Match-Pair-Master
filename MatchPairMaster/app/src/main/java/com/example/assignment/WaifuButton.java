@@ -30,6 +30,14 @@ public class WaifuButton extends FloatingActionButton implements View.OnTouchLis
         init();
     }
 
+    @Override
+    public boolean performClick() {
+        // Call the super implementation, which generates an accessibility event
+        super.performClick();
+        // Custom logic can be added here if necessary
+        return true;
+    }
+
     private void init() {
         setOnTouchListener(this);
     }
