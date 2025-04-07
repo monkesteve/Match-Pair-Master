@@ -23,6 +23,7 @@ public class Finish extends BaseActivity {
     String playerName;
     int result;
     String date;
+    int diff;
     double duration;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -39,8 +40,9 @@ public class Finish extends BaseActivity {
         result = intent.getIntExtra("result", 0);
         duration = intent.getDoubleExtra("duration", 0);
         date = intent.getStringExtra("date");
+        diff = intent.getIntExtra("difficulties", 1);
         DataBase db = new DataBase();
-        db.insertTestLog(playerName, date, duration, result);
+        db.insertTestLog(playerName, date, duration, result, diff);
         db.close();
 
 
@@ -89,11 +91,11 @@ public class Finish extends BaseActivity {
             String name = cursor.getString(cursor.getColumnIndex("playerName"));
             int moves = cursor.getInt(cursor.getColumnIndex("moves"));
             double time = cursor.getDouble(cursor.getColumnIndex("duration"));
-            shareBody = name + " has completed the Match Pair game in " + (int)time + " seconds with " + moves + " moves!";
+            shareBody = name + " has completed the Match Pair game Level "+diff+" in " + (int)time + " seconds with " + moves + " moves!";
             cursor.close();
         } else {
             // Fallback if cursor fails
-            shareBody = "I have completed the Match Pair game in " + (int)duration + " seconds with " + result + " moves!";
+            shareBody = "I have completed the Match Pair game Level "+diff+" in " + (int)duration + " seconds with " + result + " moves!";
         }
 
         // Create the share intent

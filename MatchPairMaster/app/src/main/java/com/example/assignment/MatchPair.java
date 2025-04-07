@@ -48,16 +48,17 @@ public class MatchPair extends BaseActivity {
     LocalTime questionStart;
     LocalDate startDate;
     String playerName;
+    int diff;
     int testNo;
-    final int questionCount = 4;
-    final int[] animals = {R.drawable.rabbit, R.drawable.elephant, R.drawable.lion, R.drawable.cat};
+    int questionCount = 4;
+    final int[] animals = {R.drawable.rabbit, R.drawable.elephant, R.drawable.lion, R.drawable.cat, R.drawable.bee, R.drawable.shark, R.drawable.penguin, R.drawable.otter};
     int correctCount;
     int btnIndex;
 
     int moves;
     int yourAnswer, tmpAnswer;
     TextView tvPlayer, tvMoves;
-    ImageButton A1, A2, A3, A4, A5, A6, A7, A8;
+    ImageButton A1,A2,A3,A4,A5,A6,A7,A8,A9,A10,A11,A12,A13,A14,A15,A16;
     boolean memStart = false;
     int[] buttonAns = new int[8];
     ImageButton[] btns;
@@ -81,24 +82,49 @@ public class MatchPair extends BaseActivity {
         local = getIntent();
         playerName = local.getStringExtra("playerName");
         btnIndex = -1;
-
+        diff = local.getIntExtra("difficulties", 1);
 
         // View initialize
         tvPlayer = findViewById(R.id.tvPlayer);
         tvMoves = findViewById(R.id.tvMoves);
         tvMoves.setText("Your Moves: " + moves);
         A1 = (ImageButton) findViewById(R.id.A1);
-        A2 = (ImageButton) findViewById(R.id.A2);
-        A3 = (ImageButton) findViewById(R.id.A3);
-        A4 = (ImageButton) findViewById(R.id.A4);
-        A5 = (ImageButton) findViewById(R.id.A5);
-        A6 = (ImageButton) findViewById(R.id.A6);
-        A7 = (ImageButton) findViewById(R.id.A7);
-        A8 = (ImageButton) findViewById(R.id.A8);
-        btns = new ImageButton[]{A1, A2, A3, A4, A5, A6, A7, A8};
+        A2 = (ImageButton)findViewById(R.id.A2);
+        A3 = (ImageButton)findViewById(R.id.A3);
+        A4 = (ImageButton)findViewById(R.id.A4);
+        A5 = (ImageButton)findViewById(R.id.A5);
+        A6 = (ImageButton)findViewById(R.id.A6);
+        A7 = (ImageButton)findViewById(R.id.A7);
+        A8 = (ImageButton)findViewById(R.id.A8);
+        A9 = (ImageButton) findViewById(R.id.A9);
+        A10 = (ImageButton)findViewById(R.id.A10);
+        A11 = (ImageButton)findViewById(R.id.A11);
+        A12 = (ImageButton)findViewById(R.id.A12);
+        A13 = (ImageButton)findViewById(R.id.A13);
+        A14 = (ImageButton)findViewById(R.id.A14);
+        A15 = (ImageButton)findViewById(R.id.A15);
+        A16 = (ImageButton)findViewById(R.id.A16);
+        btns = new ImageButton[]{A1,A2,A3,A4,A5,A6,A7,A8,A9,A10,A11,A12,A13,A14,A15,A16};
         mp = MediaPlayer.create(getApplicationContext(), R.raw.filpsound3);
         mp2 = MediaPlayer.create(getApplicationContext(), R.raw.success);
         tvPlayer.setText("Fighting ! " + playerName);
+
+        switch (diff){
+            case 1:
+                for (int i = 8; i < btns.length; i++) {
+                    btns[i].setVisibility(View.GONE);
+                }
+                break;
+            case 2:
+                questionCount = 6;
+                for (int i = 12; i < btns.length; i++) {
+                    btns[i].setVisibility(View.GONE);
+                }
+                break;
+            case 3:
+                questionCount = 8;
+                break;
+        }
 
 
         // main process
@@ -215,6 +241,7 @@ public class MatchPair extends BaseActivity {
         intent.putExtra("result", this.moves);
         intent.putExtra("duration", duration);
         intent.putExtra("date", convertToDateViaInstant(startDate).toString());
+        intent.putExtra("difficulties", this.diff);
         startActivity(intent);
         finish();
     }
@@ -228,14 +255,14 @@ public class MatchPair extends BaseActivity {
 
     public int[] genRandom() {
         List<Integer> list = new ArrayList<>();
-        for (int i = 1; i <= 4; i++) {
+        for (int i = 1; i <= questionCount; i++) {
             list.add(i);
             list.add(i);
         }
         Collections.shuffle(list);
         Object[] arr = list.toArray();
-        int[] intarr = new int[8];
-        for (int i = 0; i < 8; i++) {
+        int[] intarr = new int[questionCount*2];
+        for(int i = 0; i < questionCount*2; i++){
             intarr[i] = (int) arr[i];
         }
         return intarr;

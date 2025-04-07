@@ -61,7 +61,7 @@ public class MainActivity extends BaseActivity {
         }
     }
 
-    public void start(final View view){
+    public void start(final View view) {
         view.startAnimation(AnimationUtils.loadAnimation(this, R.anim.imagebtn));
         final AlertDialog.Builder alertDialog = new AlertDialog.Builder(MainActivity.this);
         alertDialog.setTitle("Player Name");
@@ -73,20 +73,55 @@ public class MainActivity extends BaseActivity {
         alertDialog.setView(input);
         alertDialog.setIcon(R.drawable.ic_baseline_face_24);
 
-        alertDialog.setPositiveButton("YES",
-                new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int which) {
-                        String playerName = input.getText().toString();
-                        if (!playerName.equals("") && playerName.length() > 2 && playerName.length() < 12) {
-                            Intent myIntent1 = new Intent(MainActivity.this, Create.class);
-                            myIntent1.putExtra("playerName",playerName);
-                            startActivity(myIntent1);
-                        }else {
-                            Toast.makeText(MainActivity.this, "Invalid player name! \n" +
-                                    "Please enter text within 3 to 12 character!", Toast.LENGTH_LONG).show();
-                        }
-                    }
-                });
+        // Button for Level 1 (set as positive)
+        alertDialog.setPositiveButton("Level 1", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int which) {
+                String playerName = input.getText().toString();
+                if (!playerName.equals("") && playerName.length() > 2 && playerName.length() < 12) {
+                    Intent intent = new Intent(MainActivity.this, Create.class);
+                    intent.putExtra("playerName", playerName);
+                    intent.putExtra("difficulties", 1);
+                    startActivity(intent);
+                } else {
+                    Toast.makeText(MainActivity.this, "Invalid player name! \n" +
+                            "Please enter text within 3 to 12 characters!", Toast.LENGTH_LONG).show();
+                }
+            }
+        });
+
+        // Button for Level 2 (set as negative)
+        alertDialog.setNegativeButton("Level 2", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int which) {
+                String playerName = input.getText().toString();
+                if (!playerName.equals("") && playerName.length() > 2 && playerName.length() < 12) {
+                    Intent intent = new Intent(MainActivity.this, Create.class);
+                    intent.putExtra("playerName", playerName);
+                    intent.putExtra("difficulties", 2);
+                    startActivity(intent);
+                } else {
+                    Toast.makeText(MainActivity.this, "Invalid player name! \n" +
+                            "Please enter text within 3 to 12 characters!", Toast.LENGTH_LONG).show();
+                }
+            }
+        });
+
+        // Button for Level 3 (set as neutral)
+        alertDialog.setNeutralButton("Level 3", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int which) {
+                String playerName = input.getText().toString();
+                if (!playerName.equals("") && playerName.length() > 2 && playerName.length() < 12) {
+                    Intent intent = new Intent(MainActivity.this, Create.class);
+                    intent.putExtra("playerName", playerName);
+                    intent.putExtra("difficulties", 3);
+                    startActivity(intent);
+                } else {
+                    Toast.makeText(MainActivity.this, "Invalid player name! \n" +
+                            "Please enter text within 3 to 12 characters!", Toast.LENGTH_LONG).show();
+                }
+            }
+        });
+
+        // Show the AlertDialog
         alertDialog.show();
     }
 

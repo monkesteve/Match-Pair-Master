@@ -15,6 +15,7 @@ import org.json.JSONObject;
 public class Create extends BaseActivity {
     String result;
     String playerName;
+    int diff;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -24,10 +25,12 @@ public class Create extends BaseActivity {
                 WindowManager.LayoutParams.FLAG_FULLSCREEN); //enable full screen
         setContentView(R.layout.splash);
         Intent intent = getIntent();
+        diff = intent.getIntExtra("difficulties", 1);
         playerName = intent.getStringExtra("playerName");
 
         Intent myIntent = new Intent(this, MatchPair.class);
         myIntent.putExtra("playerName", this.playerName);
+        myIntent.putExtra("difficulties", this.diff);
         startActivity(myIntent);
         finish();
     }
