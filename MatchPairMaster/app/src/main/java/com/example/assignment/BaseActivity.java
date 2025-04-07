@@ -10,6 +10,9 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
+import android.content.BroadcastReceiver;
+import android.content.IntentFilter;
+import android.content.Context;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -24,6 +27,8 @@ public abstract class BaseActivity extends AppCompatActivity {
     private static final String KEY_BUTTON_Y = "buttonY";
     private static float lastX = -1;
     private static float lastY = -1;
+    private BroadcastReceiver batteryReceiver;
+    private boolean isLowBattery = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,6 +39,22 @@ public abstract class BaseActivity extends AppCompatActivity {
     public void setContentView(int layoutResID) {
         super.setContentView(layoutResID);
         addWaifuButton();
+
+        batteryReceiver = new BroadcastReceiver() {
+            @Override
+            public void onReceive(Context context, Intent intent) {
+                String action = intent.getAction();
+                if (BatteryLevelReceiver.ACTION_BATTERY_LOW.equals(action)) {
+                    int level = intent.getIntExtra(BatteryLevelReceiver.EXTRA_BATTERY_LEVEL, -1);
+                    isLowBattery = true;
+                    Toast.makeText(BaseActivity.this,
+                            "Battery low: " + level + "%. Please charge your device.",
+                            Toast.LENGTH_LONG).show();
+                } else if (BatteryLevelReceiver.ACTION_BATTERY_OKAY.equals(action)) {
+                    isLowBattery = false;
+                }
+            }
+        };
     }
 
     private void addWaifuButton() {
@@ -144,6 +165,11 @@ public abstract class BaseActivity extends AppCompatActivity {
             lastY = waifuButton.getY();
             saveButtonPosition();
         }
+        try {
+            unregisterReceiver(batteryReceiver);
+        } catch (IllegalArgumentException e) {
+            // Receiver not registered
+        }
     }
 
     @Override
@@ -160,6 +186,20 @@ public abstract class BaseActivity extends AppCompatActivity {
         if (activeActivities == 0) {
             sendAppStateToService("APP_CLOSED");
         }
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        // Register battery receiver
+        IntentFilter batteryFilter = new IntentFilter();
+        batteryFilter.addAction(BatteryLevelReceiver.ACTION_BATTERY_LOW);
+        batteryFilter.addAction(BatteryLevelReceiver.ACTION_BATTERY_OKAY);
+        registerReceiver(batteryReceiver, batteryFilter);
+
+        // Request current battery status
+        registerReceiver(null, new IntentFilter(Intent.ACTION_BATTERY_CHANGED));
     }
 
     protected void sendAppStateToService(String action) {

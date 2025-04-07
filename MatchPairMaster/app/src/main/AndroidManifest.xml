@@ -54,6 +54,14 @@
                 <action android:name="com.example.assignment.RESTART_SERVICE" />
             </intent-filter>
         </receiver>
+
+        <receiver android:name=".BatteryLevelReceiver" android:exported="false">
+            <intent-filter>
+                <action android:name="android.intent.action.BATTERY_CHANGED" />
+                <action android:name="android.intent.action.BATTERY_LOW" />
+                <action android:name="android.intent.action.BATTERY_OKAY" />
+            </intent-filter>
+        </receiver>
     </application>
 
 </manifest>

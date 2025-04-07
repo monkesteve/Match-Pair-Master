@@ -22,6 +22,8 @@ public class ForegroundService extends Service {
     private Handler handler;
     private boolean isAppInForeground = true;
     private Runnable delayedNotificationUpdate;
+    private int currentBatteryLevel = 100;
+    public static final String ACTION_BATTERY_UPDATE = "BATTERY_UPDATE";
 
     public ForegroundService() {
     }
@@ -72,6 +74,19 @@ public class ForegroundService extends Service {
                     // Start the 10-second countdown
                     handler.removeCallbacks(delayedNotificationUpdate);
                     handler.postDelayed(delayedNotificationUpdate, 10000); // 10 seconds delay
+                    break;
+
+                case "BATTERY_UPDATE":
+                    int batteryLevel = intent.getIntExtra(BatteryLevelReceiver.EXTRA_BATTERY_LEVEL, -1);
+                    if (batteryLevel != -1) {
+                        currentBatteryLevel = batteryLevel;
+                        if (batteryLevel <= 20) {
+                            updateNotification("Battery low (" + batteryLevel + "%)! Please charge your device to continue playing.");
+                        } else if (!isAppInForeground) {
+                            // Only update if app is not in foreground
+                            updateNotification("We will remind you to play the game. Battery: " + batteryLevel + "%");
+                        }
+                    }
                     break;
             }
         }
