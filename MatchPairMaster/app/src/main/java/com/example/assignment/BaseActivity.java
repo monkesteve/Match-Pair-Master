@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
 
@@ -42,12 +43,16 @@ public abstract class BaseActivity extends AppCompatActivity {
         // Create the WaifuButton instance.
         waifuButton = new WaifuButton(this);
         waifuButton.setId(R.id.fab);
-        waifuButton.setImageResource(R.drawable.real_data_lost);
+        waifuButton.setImageResource(R.drawable.waifu);
+
+        waifuButton.setScaleType(ImageView.ScaleType.FIT_CENTER);
+        waifuButton.setPadding(0, 0, 0, 0);
 
         // Set layout parameters for position using RelativeLayout parameters.
         RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(
-                RelativeLayout.LayoutParams.WRAP_CONTENT,
-                RelativeLayout.LayoutParams.WRAP_CONTENT
+//                RelativeLayout.LayoutParams.WRAP_CONTENT,
+//                RelativeLayout.LayoutParams.WRAP_CONTENT
+                256, 256
         );
         params.addRule(RelativeLayout.ALIGN_PARENT_BOTTOM);
         params.addRule(RelativeLayout.ALIGN_PARENT_END);
