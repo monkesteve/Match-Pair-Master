@@ -57,13 +57,13 @@ public class MatchPair extends BaseActivity {
     int moves;
     int yourAnswer, tmpAnswer;
     TextView tvPlayer, tvMoves;
-    ImageButton A1,A2,A3,A4,A5,A6,A7,A8;
+    ImageButton A1, A2, A3, A4, A5, A6, A7, A8;
     boolean memStart = false;
     int[] buttonAns = new int[8];
     ImageButton[] btns;
     Intent local;
 
-    MediaPlayer mp,mp2;
+    MediaPlayer mp, mp2;
 
 
     @RequiresApi(api = Build.VERSION_CODES.O)
@@ -86,19 +86,19 @@ public class MatchPair extends BaseActivity {
         // View initialize
         tvPlayer = findViewById(R.id.tvPlayer);
         tvMoves = findViewById(R.id.tvMoves);
-        tvMoves.setText("Your Moves: "+moves);
+        tvMoves.setText("Your Moves: " + moves);
         A1 = (ImageButton) findViewById(R.id.A1);
-        A2 = (ImageButton)findViewById(R.id.A2);
-        A3 = (ImageButton)findViewById(R.id.A3);
-        A4 = (ImageButton)findViewById(R.id.A4);
-        A5 = (ImageButton)findViewById(R.id.A5);
-        A6 = (ImageButton)findViewById(R.id.A6);
-        A7 = (ImageButton)findViewById(R.id.A7);
-        A8 = (ImageButton)findViewById(R.id.A8);
-        btns = new ImageButton[]{A1,A2,A3,A4,A5,A6,A7,A8};
+        A2 = (ImageButton) findViewById(R.id.A2);
+        A3 = (ImageButton) findViewById(R.id.A3);
+        A4 = (ImageButton) findViewById(R.id.A4);
+        A5 = (ImageButton) findViewById(R.id.A5);
+        A6 = (ImageButton) findViewById(R.id.A6);
+        A7 = (ImageButton) findViewById(R.id.A7);
+        A8 = (ImageButton) findViewById(R.id.A8);
+        btns = new ImageButton[]{A1, A2, A3, A4, A5, A6, A7, A8};
         mp = MediaPlayer.create(getApplicationContext(), R.raw.filpsound3);
         mp2 = MediaPlayer.create(getApplicationContext(), R.raw.success);
-        tvPlayer.setText("Fighting ! "+playerName);
+        tvPlayer.setText("Fighting ! " + playerName);
 
 
         // main process
@@ -108,12 +108,12 @@ public class MatchPair extends BaseActivity {
     }
 
     // onclick method
-    public void ansClick(View view){
+    public void ansClick(View view) {
         mp.start();
 
-        for(int i = 0; i < buttonAns.length; i++){
-            if(view.getId() == btns[i].getId()){
-                if(btnIndex == i){
+        for (int i = 0; i < buttonAns.length; i++) {
+            if (view.getId() == btns[i].getId()) {
+                if (btnIndex == i) {
                     return;
                 }
                 btnIndex = i;
@@ -127,24 +127,24 @@ public class MatchPair extends BaseActivity {
 
             @Override
             public void onFinishShowDigit() {
-                for(int i = 0; i < buttonAns.length; i++){
-                    if(btns[i].getTag(R.id.tag_status) == "done"){
+                for (int i = 0; i < buttonAns.length; i++) {
+                    if (btns[i].getTag(R.id.tag_status) == "done") {
                         mp2.start();
                         btns[i].setBackground(null);
                         btns[i].setEnabled(false);
-                        btns[i].setTag(R.id.tag_status,"");
+                        btns[i].setTag(R.id.tag_status, "");
                     }
 
                 }
-                for(int i = 0; i < btns.length; i++){
-                    if(btns[i].getTag(R.id.tag_status)=="showing"){
+                for (int i = 0; i < btns.length; i++) {
+                    if (btns[i].getTag(R.id.tag_status) == "showing") {
                         mp.start();
                         btns[i].setTag(R.id.tag_status, "");
                         btns[i].animate().rotationYBy(-180);
 
                     }
                     btns[i].setImageResource(android.R.color.transparent);
-                    if(btns[i].getBackground() != null){
+                    if (btns[i].getBackground() != null) {
                         btns[i].setEnabled(true);
                     }
                 }
@@ -153,7 +153,7 @@ public class MatchPair extends BaseActivity {
 
         });
 
-        if(!memStart){
+        if (!memStart) {
             tmpAnswer = yourAnswer;
             view.setTag(R.id.tag_status, "showing");
             ImageButton card = (ImageButton) view;
@@ -161,23 +161,23 @@ public class MatchPair extends BaseActivity {
             card.animate().rotationYBy(180).withEndAction(new Runnable() {
                 @Override
                 public void run() {
-                    btns[btnIndex].setImageResource(animals[yourAnswer-1]);
+                    btns[btnIndex].setImageResource(animals[yourAnswer - 1]);
                 }
             });
-        }else{
-            for(int i = 0; i < btns.length; i++){
+        } else {
+            for (int i = 0; i < btns.length; i++) {
                 btns[i].setEnabled(false);
             }
 
 
-            if (yourAnswer == tmpAnswer){
-                for(int i = 0; i < buttonAns.length; i++){
-                    if(buttonAns[i] == yourAnswer){
-                        btns[i].setTag(R.id.tag_status,"done");
+            if (yourAnswer == tmpAnswer) {
+                for (int i = 0; i < buttonAns.length; i++) {
+                    if (buttonAns[i] == yourAnswer) {
+                        btns[i].setTag(R.id.tag_status, "done");
                     }
                 }
                 correctCount++;
-            }else{
+            } else {
                 view.setTag(R.id.tag_status, "showing");
             }
             ImageButton card = (ImageButton) view;
@@ -185,13 +185,13 @@ public class MatchPair extends BaseActivity {
             card.animate().rotationYBy(180).withEndAction(new Runnable() {
                 @Override
                 public void run() {
-                    btns[btnIndex].setImageResource(animals[yourAnswer-1]);
+                    btns[btnIndex].setImageResource(animals[yourAnswer - 1]);
                     btnTask.execute();
                     tmpAnswer = 0;
                     yourAnswer = 0;
                     btnIndex = -1;
                     moves++;
-                    if(correctCount >= questionCount){
+                    if (correctCount >= questionCount) {
                         finishGame();
                     }
                 }
@@ -200,20 +200,19 @@ public class MatchPair extends BaseActivity {
         }
 
 
-        tvMoves.setText("Your Moves: "+moves);
+        tvMoves.setText("Your Moves: " + moves);
         memStart = !memStart;
     }
 
 
-
-    public void finishGame(){
+    public void finishGame() {
         // end
         mp.release();
         double duration = questionStart.until(LocalTime.now(), ChronoUnit.SECONDS);
         Intent intent = new Intent(MatchPair.this, Finish.class);
-        intent.putExtra("testNo",this.testNo);
+        intent.putExtra("testNo", this.testNo);
         intent.putExtra("playerName", this.playerName);
-        intent.putExtra("result",this.moves);
+        intent.putExtra("result", this.moves);
         intent.putExtra("duration", duration);
         intent.putExtra("date", convertToDateViaInstant(startDate).toString());
         startActivity(intent);
@@ -227,7 +226,7 @@ public class MatchPair extends BaseActivity {
                 .toInstant());
     }
 
-    public int[] genRandom(){
+    public int[] genRandom() {
         List<Integer> list = new ArrayList<>();
         for (int i = 1; i <= 4; i++) {
             list.add(i);
@@ -236,7 +235,7 @@ public class MatchPair extends BaseActivity {
         Collections.shuffle(list);
         Object[] arr = list.toArray();
         int[] intarr = new int[8];
-        for(int i = 0; i < 8; i++){
+        for (int i = 0; i < 8; i++) {
             intarr[i] = (int) arr[i];
         }
         return intarr;

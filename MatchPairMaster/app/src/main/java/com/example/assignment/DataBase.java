@@ -16,63 +16,64 @@ public class DataBase {
 
     // varible dictionary
     private final String TABLE_NAME_TL = "TestsLog";
-    private final String[] TL_COLUMN = {"testNo","playerName","testDate", "duration", "moves"};
+    private final String[] TL_COLUMN = {"testNo", "playerName", "testDate", "duration", "moves"};
 
     private SQLiteDatabase db;
     private String sql;
     private Cursor cursor = null;
 
 
-    public DataBase(){
+    public DataBase() {
         // define db
         db = SQLiteDatabase.openDatabase("/data/data/com.example.assignment/MatchPair", null, SQLiteDatabase.CREATE_IF_NECESSARY);
     }
 
-    public void updateTestLog(int testNo, double duration, int moves){
-        sql = "UPDATE "+TABLE_NAME_TL+" SET duration ="+duration+", moves ="+moves+" WHERE testNo ="+testNo+";";
+    public void updateTestLog(int testNo, double duration, int moves) {
+        sql = "UPDATE " + TABLE_NAME_TL + " SET duration =" + duration + ", moves =" + moves + " WHERE testNo =" + testNo + ";";
         db.execSQL(sql);
     }
 
-    public void insertTestLog(int testNo, String playerName, String testDate,double duration, int moves){
+    public void insertTestLog(int testNo, String playerName, String testDate, double duration, int moves) {
         // insert into TestLog
-        sql = "INSERT INTO "+TABLE_NAME_TL+"(testNo, playerName, testDate, duration, moves) VALUES" +
-                "("+testNo+",'"+playerName+"','"+testDate+"','"+duration+"',"+moves+");";
-        db.execSQL(sql);
-    }
-    public void insertTestLog(String playerName, String testDate,double duration, int moves){
-        // insert into TestLog
-        int testNo = getMaximumTestNo()+1;
-        sql = "INSERT INTO "+TABLE_NAME_TL+"(testNo, playerName, testDate, duration, moves) VALUES" +
-                "("+testNo+",'"+playerName+"','"+testDate+"','"+duration+"',"+moves+");";
+        sql = "INSERT INTO " + TABLE_NAME_TL + "(testNo, playerName, testDate, duration, moves) VALUES" +
+                "(" + testNo + ",'" + playerName + "','" + testDate + "','" + duration + "'," + moves + ");";
         db.execSQL(sql);
     }
 
-    public void insertTestLog(String playerName, int moves){
-        int testNo = getMaximumTestNo()+1;
+    public void insertTestLog(String playerName, String testDate, double duration, int moves) {
+        // insert into TestLog
+        int testNo = getMaximumTestNo() + 1;
+        sql = "INSERT INTO " + TABLE_NAME_TL + "(testNo, playerName, testDate, duration, moves) VALUES" +
+                "(" + testNo + ",'" + playerName + "','" + testDate + "','" + duration + "'," + moves + ");";
+        db.execSQL(sql);
+    }
+
+    public void insertTestLog(String playerName, int moves) {
+        int testNo = getMaximumTestNo() + 1;
         String[][] record = getTestRecord();
-        for(int i = 0; i < record.length; i++){
-            if(playerName.equals(record[i][1])){
+        for (int i = 0; i < record.length; i++) {
+            if (playerName.equals(record[i][1])) {
                 return;
             }
         }
-        sql = "INSERT INTO "+TABLE_NAME_TL+"(testNo, playerName, moves) VALUES" +
-                "("+testNo+",'"+playerName+"',"+moves+");";
+        sql = "INSERT INTO " + TABLE_NAME_TL + "(testNo, playerName, moves) VALUES" +
+                "(" + testNo + ",'" + playerName + "'," + moves + ");";
         db.execSQL(sql);
     }
 
-    public int getMaximumTestNo(){
-        sql = "SELECT MAX(testNo) FROM "+TABLE_NAME_TL+";";
+    public int getMaximumTestNo() {
+        sql = "SELECT MAX(testNo) FROM " + TABLE_NAME_TL + ";";
         cursor = db.rawQuery(sql, null);
         int maxNumber = 0;
-        if ((cursor.moveToFirst()) || !(cursor.getCount() ==0)){
+        if ((cursor.moveToFirst()) || !(cursor.getCount() == 0)) {
             maxNumber = cursor.getInt(0);
         }
         return maxNumber;
     }
 
-    public void createTLTD(){
+    public void createTLTD() {
         // create table TestLog and TestDetails
-        sql = "CREATE TABLE IF NOT EXISTS "+TABLE_NAME_TL+"(" +
+        sql = "CREATE TABLE IF NOT EXISTS " + TABLE_NAME_TL + "(" +
                 "testNo int PRIMARY KEY," +
                 "playerName text," +
                 "testDate date," +
@@ -81,14 +82,14 @@ public class DataBase {
         db.execSQL(sql);
     }
 
-    public String[][] getTestRecord(){
-        sql = "SELECT testNo, playerName, testDate, duration, moves FROM "+TABLE_NAME_TL+" ORDER BY moves ASC, duration DESC;";
+    public String[][] getTestRecord() {
+        sql = "SELECT testNo, playerName, testDate, duration, moves FROM " + TABLE_NAME_TL + " ORDER BY moves ASC, duration DESC;";
         cursor = db.rawQuery(sql, null);
 
         String[][] testRecord = new String[20][5];
 
         int i = 0;
-        while (cursor.moveToNext()){
+        while (cursor.moveToNext()) {
             String playerName = cursor.getString(cursor.getColumnIndex(TL_COLUMN[1]));
             String date = cursor.getString(cursor.getColumnIndex(TL_COLUMN[2]));
             double duration = cursor.getDouble(cursor.getColumnIndex(TL_COLUMN[3]));
@@ -96,30 +97,30 @@ public class DataBase {
 
 
             testRecord[i][1] = playerName;
-            if(date!=null){
-                testRecord[i][2] = date.substring(0,10);
+            if (date != null) {
+                testRecord[i][2] = date.substring(0, 10);
             }
-            testRecord[i][3] = (int)duration+"s";
-            testRecord[i][4] = moves+"";
+            testRecord[i][3] = (int) duration + "s";
+            testRecord[i][4] = moves + "";
 
-            if(i >= 19){
+            if (i >= 19) {
                 break;
-            }else{
+            } else {
                 i++;
             }
         }
-        for(int j = 0; j < testRecord.length; j++){
-            testRecord[j][0] = ""+(j+1);
+        for (int j = 0; j < testRecord.length; j++) {
+            testRecord[j][0] = "" + (j + 1);
         }
         return testRecord;
     }
 
-    public void close(){
+    public void close() {
         db.close();
     }
 
-    public void dropTable(){
-        sql = "DROP TABLE IF EXISTS "+ TABLE_NAME_TL +";";
+    public void dropTable() {
+        sql = "DROP TABLE IF EXISTS " + TABLE_NAME_TL + ";";
         db.execSQL(sql);
     }
 
