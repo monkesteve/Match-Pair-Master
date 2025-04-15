@@ -51,7 +51,8 @@ public class Finish extends BaseActivity {
 
         tvCong.setText(playerName);
         tvResult.setText("Your Moves: " + result +"\n\n" +
-                "Time spent: "+(int)duration+"s\n\n");
+                "Time spent: "+(int)duration+"s\n\n"+
+                "Level: "+(int)diff+"\n\n");
 
     }
 
