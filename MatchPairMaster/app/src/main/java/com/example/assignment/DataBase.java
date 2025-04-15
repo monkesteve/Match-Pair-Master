@@ -83,7 +83,7 @@ public class DataBase {
     }
 
     public String[][] getTestRecord(){
-        sql = "SELECT testNo, playerName, testDate, duration, moves, difficulties FROM "+TABLE_NAME_TL+" ORDER BY moves ASC, duration DESC;";
+        sql = "SELECT testNo, playerName, testDate, duration, moves, difficulties FROM "+TABLE_NAME_TL+" ORDER BY difficulties DESC, moves ASC, duration DESC;";
         cursor = db.rawQuery(sql, null);
 
         String[][] testRecord = new String[20][6];

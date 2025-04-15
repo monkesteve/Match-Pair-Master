@@ -72,7 +72,7 @@
         android:layout_height="wrap_content"
         android:background="#D0104C"
         android:textColor="#FFFFFF"
-        android:text="  #     Player Name          Test Date              Duration         Moves"/>
+        android:text="  #     Player Name          Test Date              Duration         Moves   Lv."/>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rV"

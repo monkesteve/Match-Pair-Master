@@ -12,12 +12,13 @@ public class MyViewHolder extends RecyclerView.ViewHolder {
     public MyViewHolder(@NonNull View itemView){
         super(itemView);
         container = itemView.findViewById(R.id.itemContainer);
-        txtItem = new TextView[5];
+        txtItem = new TextView[6];
         txtItem[0] = itemView.findViewById(R.id.ItemRank);
         txtItem[1] = itemView.findViewById(R.id.ItemPlayerName);
         txtItem[2] = itemView.findViewById(R.id.ItemDate);
         txtItem[3] = itemView.findViewById(R.id.ItemDuration);
         txtItem[4] = itemView.findViewById(R.id.ItemCorrectCount);
+        txtItem[5] = itemView.findViewById(R.id.ItemDiff);
 
     }
 
