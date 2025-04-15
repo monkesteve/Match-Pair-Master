@@ -2,19 +2,25 @@ package com.example.assignment;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.media.MediaPlayer;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 import android.content.BroadcastReceiver;
 import android.content.IntentFilter;
 import android.content.Context;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public abstract class BaseActivity extends AppCompatActivity {
 
@@ -30,15 +36,26 @@ public abstract class BaseActivity extends AppCompatActivity {
     private BroadcastReceiver batteryReceiver;
     private boolean isLowBattery = false;
 
+    private int[] audioResources = {R.raw.do_not_touch_me, R.raw.scoreboard};
+
+    private Button summonWaifuButton;
+    private boolean isWaifuButtonVisible = false;
+
+    private View speechBubble;
+    private Map<Integer, String> audioTextMap;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        summonWaifuButton= findViewById(R.id.showWaifuButton);
     }
 
     @Override
     public void setContentView(int layoutResID) {
         super.setContentView(layoutResID);
-        addWaifuButton();
+//        addWaifuButton();
 
         batteryReceiver = new BroadcastReceiver() {
             @Override
@@ -57,7 +74,19 @@ public abstract class BaseActivity extends AppCompatActivity {
         };
     }
 
+    public void summonWaifu(View view) {
+        if (isWaifuButtonVisible == false) {
+            addWaifuButton();
+            isWaifuButtonVisible = true;
+        } else {
+            waifuButton.setVisibility(View.VISIBLE);
+        }
+    }
+
     private void addWaifuButton() {
+        if (isWaifuButtonVisible) {
+            return; // if button already existed, don't create again
+        }
         // Get the root view where the button will be added.
         ViewGroup rootView = findViewById(android.R.id.content);
 
@@ -80,9 +109,19 @@ public abstract class BaseActivity extends AppCompatActivity {
         params.setMargins(0, 0, 32, 32); // default margin in pixels
         waifuButton.setLayoutParams(params);
 
+        audioTextMap = new HashMap<>();
+        audioTextMap.put(R.raw.greetings, "Well it's been a while, click the button below to start the game!");
+        audioTextMap.put(R.raw.do_not_touch_me, "Don't touch me! Play the game");
+        audioTextMap.put(R.raw.scoreboard,"If you click If you click score board, you can see the ranking of every player");
+
+
+
         // Set default click behavior.
         waifuButton.setOnClickListener(view -> {
-            Toast.makeText(this, "waifu clicked", Toast.LENGTH_SHORT).show();
+            int randomIndex = (int) (Math.random() * audioResources.length);
+            int selectedAudio = audioResources[randomIndex];
+            playAudioWithSpeechBubble(selectedAudio);
+//            Toast.makeText(this, "waifu clicked", Toast.LENGTH_SHORT).show();
         });
 
         // Once layout is complete, adjust the button's position if saved.
@@ -98,6 +137,10 @@ public abstract class BaseActivity extends AppCompatActivity {
                 }
             }
         });
+
+        //release after playing
+        playAudioWithSpeechBubble(R.raw.greetings);
+
 
         // Listen for drag events to save the new position.
         waifuButton.setOnTouchListener(new View.OnTouchListener() {
@@ -140,6 +183,18 @@ public abstract class BaseActivity extends AppCompatActivity {
         if (rootView != null) {
             rootView.addView(waifuButton);
         }
+
+        speechBubble = new TextView(this);
+        ((TextView) speechBubble).setText("");
+        speechBubble.setBackgroundResource(R.drawable.speech_bubble_background);
+        speechBubble.setPadding(16, 16, 16, 16);
+        speechBubble.setVisibility(View.GONE); // 默认隐藏
+
+        RelativeLayout.LayoutParams bubbleParams = new RelativeLayout.LayoutParams(
+                RelativeLayout.LayoutParams.WRAP_CONTENT,
+                RelativeLayout.LayoutParams.WRAP_CONTENT
+        );
+        rootView.addView(speechBubble, bubbleParams);
     }
 
     private void saveButtonPosition() {
@@ -169,6 +224,42 @@ public abstract class BaseActivity extends AppCompatActivity {
             unregisterReceiver(batteryReceiver);
         } catch (IllegalArgumentException e) {
             // Receiver not registered
+        }
+    }
+
+    private void playAudioWithSpeechBubble(int audioResId) {
+        // 播放音频
+        MediaPlayer mediaPlayer = MediaPlayer.create(this, audioResId);
+        mediaPlayer.setOnCompletionListener(mp -> {
+            mp.release();
+            speechBubble.setVisibility(View.GONE); // 音频播放完成后隐藏对话气泡
+        });
+        mediaPlayer.start();
+
+        // 更新对话气泡文本
+        String text = audioTextMap.get(audioResId);
+        if (text != null) {
+            updateSpeechBubble(text);
+        }
+    }
+
+    private void updateSpeechBubble(String text) {
+        if (speechBubble != null) {
+            ((TextView) speechBubble).setText(text);
+            speechBubble.setVisibility(View.VISIBLE);
+            updateSpeechBubblePosition();
+        }
+    }
+
+    private void updateSpeechBubblePosition() {
+        if (waifuButton != null && speechBubble != null) {
+            // 获取按钮的位置
+            int[] buttonLocation = new int[2];
+            waifuButton.getLocationOnScreen(buttonLocation);
+
+            // 设置对话气泡的位置
+            speechBubble.setX(buttonLocation[0] + waifuButton.getWidth() + 16); // 按钮右侧偏移
+            speechBubble.setY(buttonLocation[1]); // 与按钮垂直对齐
         }
     }
 

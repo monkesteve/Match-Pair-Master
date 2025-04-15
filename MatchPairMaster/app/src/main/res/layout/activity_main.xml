@@ -78,6 +78,7 @@
 <!--            android:onClick="textlog"-->
 <!--            android:text="Your Record"-->
 <!--            android:textColor="#FFFFFF" />-->
+
     </LinearLayout>
 
 
@@ -92,5 +93,19 @@
 <!--        android:layout_height="wrap_content"-->
 <!--        android:layout_gravity="bottom|end"-->
 <!--        android:src="@drawable/real_data_lost"/>-->
+    <Button
+        android:id="@+id/showWaifuButton"
+        android:layout_width="80dp"
+        android:layout_height="50dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginBottom="80dp"
+        android:layout_margin="8dp"
+        android:onClick="summonWaifu"
+        android:background="@drawable/waifu_button"
+        android:scaleType="fitCenter"
+        android:adjustViewBounds="true"/>
+<!--    for some reason image doesn't show up steven fix this please-->
+
 
 </RelativeLayout>
