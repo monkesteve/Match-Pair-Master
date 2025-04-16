@@ -19,7 +19,7 @@ import com.example.assignment.ChatViewModel;
 import java.util.ArrayList;
 import java.util.List;
 
-public class WaifuChat extends AppCompatActivity {
+public class WaifuChat extends BaseActivity {
 
     private ChatViewModel chatViewModel;
     private ChatAdapter chatAdapter;

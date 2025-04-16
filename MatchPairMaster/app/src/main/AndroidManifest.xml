@@ -28,6 +28,7 @@
         <activity android:name=".MatchPair" />
         <activity android:name=".Finish" />
         <activity android:name=".ScoreBoard" />
+        <activity android:name=".WaifuChat" />
 
         <service
             android:name=".ForegroundService"

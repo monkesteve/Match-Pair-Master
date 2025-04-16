@@ -118,6 +118,8 @@ public abstract class BaseActivity extends AppCompatActivity {
             int selectedAudio = audioResources[randomIndex];
             playAudioWithSpeechBubble(selectedAudio);
 //            Toast.makeText(this, "waifu clicked", Toast.LENGTH_SHORT).show();
+            Intent intent = new Intent(BaseActivity.this, WaifuChat.class);
+            startActivity(intent);
         });
 
         // Once layout is complete, adjust the button's position if saved.

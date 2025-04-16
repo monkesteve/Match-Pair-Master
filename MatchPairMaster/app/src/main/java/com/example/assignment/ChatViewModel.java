@@ -37,8 +37,6 @@ public class ChatViewModel extends ViewModel {
     public void sendMessageToGermini(String message) {
         String apiKey = BuildConfig.WAIFU_KEY;
 
-        // 使用 API 密钥调用 Germini API
-        // 示例代码：假设您有一个 HttpClient 来发送请求
         OkHttpClient client = new OkHttpClient();
         MediaType JSON = MediaType.get("application/json; charset=utf-8");
         String jsonBody = "{\"message\":\"" + message + "\"}";
