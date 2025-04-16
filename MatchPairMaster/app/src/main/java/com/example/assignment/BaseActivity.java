@@ -9,6 +9,7 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -34,22 +35,21 @@ public abstract class BaseActivity extends AppCompatActivity {
     private static float lastX = -1;
     private static float lastY = -1;
     private BroadcastReceiver batteryReceiver;
-    private boolean isLowBattery = false;
-
     private int[] audioResources = {R.raw.do_not_touch_me, R.raw.scoreboard};
 
-    private Button summonWaifuButton;
+    private ImageButton summonWaifuButton;
     private boolean isWaifuButtonVisible = false;
 
     private View speechBubble;
     private Map<Integer, String> audioTextMap;
 
+    private MediaPlayer currentMediaPlayer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        summonWaifuButton= findViewById(R.id.showWaifuButton);
+        summonWaifuButton = findViewById(R.id.showWaifuButton);
     }
 
     @Override
@@ -63,19 +63,16 @@ public abstract class BaseActivity extends AppCompatActivity {
                 String action = intent.getAction();
                 if (BatteryLevelReceiver.ACTION_BATTERY_LOW.equals(action)) {
                     int level = intent.getIntExtra(BatteryLevelReceiver.EXTRA_BATTERY_LEVEL, -1);
-                    isLowBattery = true;
                     Toast.makeText(BaseActivity.this,
                             "Battery low: " + level + "%. Please charge your device.",
                             Toast.LENGTH_LONG).show();
-                } else if (BatteryLevelReceiver.ACTION_BATTERY_OKAY.equals(action)) {
-                    isLowBattery = false;
                 }
             }
         };
     }
 
     public void summonWaifu(View view) {
-        if (isWaifuButtonVisible == false) {
+        if (!isWaifuButtonVisible) {
             addWaifuButton();
             isWaifuButtonVisible = true;
         } else {
@@ -112,8 +109,7 @@ public abstract class BaseActivity extends AppCompatActivity {
         audioTextMap = new HashMap<>();
         audioTextMap.put(R.raw.greetings, "Well it's been a while, click the button below to start the game!");
         audioTextMap.put(R.raw.do_not_touch_me, "Don't touch me! Play the game");
-        audioTextMap.put(R.raw.scoreboard,"If you click If you click score board, you can see the ranking of every player");
-
+        audioTextMap.put(R.raw.scoreboard, "If you click If you click score board, you can see the ranking of every player");
 
 
         // Set default click behavior.
@@ -188,7 +184,7 @@ public abstract class BaseActivity extends AppCompatActivity {
         ((TextView) speechBubble).setText("");
         speechBubble.setBackgroundResource(R.drawable.speech_bubble_background);
         speechBubble.setPadding(16, 16, 16, 16);
-        speechBubble.setVisibility(View.GONE); // 默认隐藏
+        speechBubble.setVisibility(View.GONE);
 
         RelativeLayout.LayoutParams bubbleParams = new RelativeLayout.LayoutParams(
                 RelativeLayout.LayoutParams.WRAP_CONTENT,
@@ -228,15 +224,24 @@ public abstract class BaseActivity extends AppCompatActivity {
     }
 
     private void playAudioWithSpeechBubble(int audioResId) {
-        // 播放音频
-        MediaPlayer mediaPlayer = MediaPlayer.create(this, audioResId);
-        mediaPlayer.setOnCompletionListener(mp -> {
-            mp.release();
-            speechBubble.setVisibility(View.GONE); // 音频播放完成后隐藏对话气泡
-        });
-        mediaPlayer.start();
+        // Stop and release any audio currently playing
+        if (currentMediaPlayer != null) {
+            if (currentMediaPlayer.isPlaying()) {
+                currentMediaPlayer.stop();
+            }
+            currentMediaPlayer.release();
+            currentMediaPlayer = null;
+        }
 
-        // 更新对话气泡文本
+        // Create and start new audio playback
+        currentMediaPlayer = MediaPlayer.create(this, audioResId);
+        currentMediaPlayer.setOnCompletionListener(mp -> {
+            speechBubble.setVisibility(View.GONE);
+            mp.release();
+            currentMediaPlayer = null;
+        });
+        currentMediaPlayer.start();
+
         String text = audioTextMap.get(audioResId);
         if (text != null) {
             updateSpeechBubble(text);
@@ -253,13 +258,13 @@ public abstract class BaseActivity extends AppCompatActivity {
 
     private void updateSpeechBubblePosition() {
         if (waifuButton != null && speechBubble != null) {
-            // 获取按钮的位置
+
             int[] buttonLocation = new int[2];
             waifuButton.getLocationOnScreen(buttonLocation);
 
-            // 设置对话气泡的位置
-            speechBubble.setX(buttonLocation[0] + waifuButton.getWidth() + 16); // 按钮右侧偏移
-            speechBubble.setY(buttonLocation[1]); // 与按钮垂直对齐
+
+            speechBubble.setX(buttonLocation[0] + waifuButton.getWidth() + 16);
+            speechBubble.setY(buttonLocation[1]);
         }
     }
 
