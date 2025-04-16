@@ -12,16 +12,16 @@
         android:orientation="horizontal"
         android:paddingTop="13dp"
         android:paddingBottom="13dp">
+
         <TextView
-            android:layout_width="0dp"
+            android:id="@+id/ItemRank"
+            android:layout_width="wrap_content"
             android:layout_height="match_parent"
+            android:layout_weight="0.3"
             android:padding="10dp"
-            android:layout_weight="0.4"
             android:shadowColor="#1C1C1C"
             android:shadowDy="5"
-            android:shadowRadius="15"
-            android:id="@+id/ItemRank"
-            />
+            android:shadowRadius="15" />
         <TextView
             android:layout_width="0dp"
             android:layout_height="match_parent"
