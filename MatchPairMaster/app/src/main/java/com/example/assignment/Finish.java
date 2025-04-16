@@ -25,6 +25,7 @@ public class Finish extends BaseActivity {
     String date;
     int diff;
     double duration;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         // Request the feature before calling super.onCreate()
@@ -69,20 +70,20 @@ public class Finish extends BaseActivity {
         tvResult = findViewById(R.id.tvResult);
 
         tvCong.setText(playerName);
-        tvResult.setText("Your Moves: " + result +"\n\n" +
-                "Time spent: "+(int)duration+"s\n\n"+
-                "Level: "+(int)diff+"\n\n");
+        tvResult.setText("Your Moves: " + result + "\n\n" +
+                "Time spent: " + (int) duration + "s\n\n" +
+                "Level: " + (int) diff + "\n\n");
 
     }
 
-    public void goBack(View v){
+    public void goBack(View v) {
         v.startAnimation(AnimationUtils.loadAnimation(this, R.anim.imagebtn));
         Intent intent = new Intent(Finish.this, MainActivity.class);
         startActivity(intent);
         finish();
     }
 
-    public void goScoreboard(View v){
+    public void goScoreboard(View v) {
         v.startAnimation(AnimationUtils.loadAnimation(this, R.anim.imagebtn));
         Intent intent = new Intent(Finish.this, ScoreBoard.class);
         startActivity(intent);
@@ -111,11 +112,11 @@ public class Finish extends BaseActivity {
             String name = cursor.getString(cursor.getColumnIndex("playerName"));
             int moves = cursor.getInt(cursor.getColumnIndex("moves"));
             double time = cursor.getDouble(cursor.getColumnIndex("duration"));
-            shareBody = name + " has completed the Match Pair game Level "+diff+" in " + (int)time + " seconds with " + moves + " moves!";
+            shareBody = name + " has completed the Match Pair game Level " + diff + " in " + (int) time + " seconds with " + moves + " moves!";
             cursor.close();
         } else {
             // Fallback if cursor fails
-            shareBody = "I have completed the Match Pair game Level "+diff+" in " + (int)duration + " seconds with " + result + " moves!";
+            shareBody = "I have completed the Match Pair game Level " + diff + " in " + (int) duration + " seconds with " + result + " moves!";
         }
 
         // Create the share intent
