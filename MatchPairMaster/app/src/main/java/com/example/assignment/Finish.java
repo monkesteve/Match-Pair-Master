@@ -52,6 +52,18 @@ public class Finish extends BaseActivity {
         db.insertTestLog(playerName, date, duration, result, diff);
         db.close();
 
+        // Use Firebase to insert the same test log record
+        FirebaseHelper firebaseHelper = new FirebaseHelper();
+        TestLog testLog = new TestLog();
+        // Assuming you want to use result as the test number or get a new unique test number
+        testLog.testNo = result;
+        testLog.playerName = playerName;
+        testLog.testDate = date;
+        testLog.duration = duration;
+        testLog.moves = result;
+        testLog.difficulties = diff;
+        firebaseHelper.insertTestLog(testLog);
+
 
         tvCong = findViewById(R.id.tvCong);
         tvResult = findViewById(R.id.tvResult);
