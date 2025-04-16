@@ -20,6 +20,7 @@ public class MainActivity extends BaseActivity {
 
     Button start;
     Intent foregroundServiceIntent;
+    FirebaseHelper firebaseHelper;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,6 +38,21 @@ public class MainActivity extends BaseActivity {
         start = findViewById(R.id.start);
         DataBase db = new DataBase();
         db.createTLTD();
+
+        // Instantiate FirebaseHelper and attach a listener
+        firebaseHelper = new FirebaseHelper();
+        firebaseHelper.attachTestLogListener();
+
+        // For demonstration, insert a sample test log record into Firebase.
+        // Ensure you have a valid TestLog class with the needed fields.
+        TestLog sampleLog = new TestLog();
+        sampleLog.testNo = db.getMaximumTestNo() + 1;
+        sampleLog.playerName = "PlayerExample";
+        sampleLog.testDate = "2023-10-01";  // format should match your requirements
+        sampleLog.duration = 120;
+        sampleLog.moves = 20;
+        sampleLog.difficulties = 1;
+        firebaseHelper.insertTestLog(sampleLog);
 
         foregroundServiceIntent = new Intent(this, ForegroundService.class);
         startForegroundService();
