@@ -44,14 +44,50 @@ public class ForegroundService extends Service {
 
         // Create the delayed runnable
         delayedNotificationUpdate = () -> {
-            updateNotification("It's been 10 seconds since you last played and we miss you already! " +
-                    "Come back and play!");
+            createNewNotification("It's been 10 seconds since you last played and we miss you already! Come back and play!");
         };
     }
 
     @Override
     public IBinder onBind(Intent intent) {
         throw new UnsupportedOperationException("Not yet implemented");
+    }
+
+    private void createNewNotification(String content) {
+        String NEW_CHANNEL_ID = "101"; // New channel ID
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            NotificationChannel newChannel = new NotificationChannel(
+                    NEW_CHANNEL_ID,
+                    "New Reminder Notifications",
+                    NotificationManager.IMPORTANCE_HIGH
+            );
+            newChannel.setDescription("New reminders for Match Pair game");
+            NotificationManager notificationManager = getSystemService(NotificationManager.class);
+            notificationManager.createNotificationChannel(newChannel);
+        }
+
+        // Create intent to open app and dismiss notification when tapped
+        Intent intent = new Intent(this, MainActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        PendingIntent pendingIntent = PendingIntent.getActivity(
+                this,
+                0,
+                intent,
+                PendingIntent.FLAG_IMMUTABLE | PendingIntent.FLAG_CANCEL_CURRENT
+        );
+
+        Notification newNotification = new NotificationCompat.Builder(this, NEW_CHANNEL_ID)
+                .setContentTitle("We Miss You!")
+                .setContentText(content)
+                .setSmallIcon(R.drawable.baseline_sentiment_dissatisfied_24)
+                .setContentIntent(pendingIntent)
+                .setAutoCancel(true) // Dismiss notification on tap
+                .setPriority(NotificationCompat.PRIORITY_HIGH)
+                .build();
+
+        NotificationManager notificationManager =
+                (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+        notificationManager.notify((int) System.currentTimeMillis(), newNotification); // Unique ID for each notification
     }
 
     @Override
