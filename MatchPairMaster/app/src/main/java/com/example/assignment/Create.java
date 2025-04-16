@@ -16,11 +16,19 @@ public class Create extends BaseActivity {
     String result;
     String playerName;
     int diff;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
+        // Request the feature before calling super.onCreate()
+        supportRequestWindowFeature(Window.FEATURE_NO_TITLE);
+
         super.onCreate(savedInstanceState);
-        requestWindowFeature(Window.FEATURE_NO_TITLE); //will hide the title
-        getSupportActionBar().hide(); // hide the title bar
+
+        // Hide the ActionBar if present
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().hide();
+        }
+
         this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN); //enable full screen
         setContentView(R.layout.splash);

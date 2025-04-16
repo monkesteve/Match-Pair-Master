@@ -22,11 +22,16 @@ public class ScoreBoard extends BaseActivity {
     DataBase db;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        // Request no title feature before adding any content
+        supportRequestWindowFeature(Window.FEATURE_NO_TITLE);
         super.onCreate(savedInstanceState);
-        requestWindowFeature(Window.FEATURE_NO_TITLE); //will hide the title
-        getSupportActionBar().hide(); // hide the title bar
+
+        // Hide the ActionBar if present and enable full screen
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().hide();
+        }
         this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
-                WindowManager.LayoutParams.FLAG_FULLSCREEN); //enable full screen
+                WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_scoreboard);
 
         initiate();

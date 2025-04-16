@@ -22,12 +22,21 @@ public class MainActivity extends BaseActivity {
     Intent foregroundServiceIntent;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        // Request no title feature before calling super.onCreate()
+        supportRequestWindowFeature(Window.FEATURE_NO_TITLE);
         super.onCreate(savedInstanceState);
-        requestWindowFeature(Window.FEATURE_NO_TITLE); //will hide the title
-        getSupportActionBar().hide(); // hide the title bar
+
+        // Hide the ActionBar if present
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().hide();
+        }
+
+        // Enable full screen
         this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
-                WindowManager.LayoutParams.FLAG_FULLSCREEN); //enable full screen
+                WindowManager.LayoutParams.FLAG_FULLSCREEN);
+
         setContentView(R.layout.activity_main);
+
         start = findViewById(R.id.start);
         DataBase db = new DataBase();
         db.createTLTD();
