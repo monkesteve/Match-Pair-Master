@@ -1,0 +1,170 @@
+<GridLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:columnCount="4"
+    android:rowCount="4"
+    android:padding="10dp"
+    android:background="@drawable/testbg">
+
+    <ImageButton
+        android:id="@+id/A1"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_columnWeight="1"
+        android:layout_rowWeight="1"
+        android:theme="@style/testBtn"
+        android:scaleType="centerInside"
+        android:padding="20dp"/>
+
+    <ImageButton
+        android:id="@+id/A2"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_columnWeight="1"
+        android:layout_rowWeight="1"
+        android:theme="@style/testBtn"
+        android:scaleType="centerInside"
+        android:padding="20dp"/>
+
+    <ImageButton
+        android:id="@+id/A9"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_columnWeight="1"
+        android:layout_rowWeight="1"
+        android:theme="@style/testBtn"
+        android:scaleType="centerInside"
+        android:padding="20dp"/>
+
+    <ImageButton
+        android:id="@+id/A13"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_columnWeight="1"
+        android:layout_rowWeight="1"
+        android:theme="@style/testBtn"
+        android:scaleType="centerInside"
+        android:padding="20dp"/>
+
+    <ImageButton
+        android:id="@+id/A3"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_columnWeight="1"
+        android:layout_rowWeight="1"
+        android:theme="@style/testBtn"
+        android:scaleType="centerInside"
+        android:padding="20dp"/>
+
+    <ImageButton
+        android:id="@+id/A4"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_columnWeight="1"
+        android:layout_rowWeight="1"
+        android:theme="@style/testBtn"
+        android:scaleType="centerInside"
+        android:padding="20dp"/>
+
+    <ImageButton
+        android:id="@+id/A10"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_columnWeight="1"
+        android:layout_rowWeight="1"
+        android:theme="@style/testBtn"
+        android:scaleType="centerInside"
+        android:padding="20dp"/>
+
+    <ImageButton
+        android:id="@+id/A14"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_columnWeight="1"
+        android:layout_rowWeight="1"
+        android:theme="@style/testBtn"
+        android:scaleType="centerInside"
+        android:padding="20dp"/>
+
+    <ImageButton
+        android:id="@+id/A5"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_columnWeight="1"
+        android:layout_rowWeight="1"
+        android:theme="@style/testBtn"
+        android:scaleType="centerInside"
+        android:padding="20dp"/>
+
+    <ImageButton
+        android:id="@+id/A6"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_columnWeight="1"
+        android:layout_rowWeight="1"
+        android:theme="@style/testBtn"
+        android:scaleType="centerInside"
+        android:padding="20dp"/>
+
+    <ImageButton
+        android:id="@+id/A11"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_columnWeight="1"
+        android:layout_rowWeight="1"
+        android:theme="@style/testBtn"
+        android:scaleType="centerInside"
+        android:padding="20dp"/>
+
+    <ImageButton
+        android:id="@+id/A15"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_columnWeight="1"
+        android:layout_rowWeight="1"
+        android:theme="@style/testBtn"
+        android:scaleType="centerInside"
+        android:padding="20dp"/>
+
+    <ImageButton
+        android:id="@+id/A7"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_columnWeight="1"
+        android:layout_rowWeight="1"
+        android:theme="@style/testBtn"
+        android:scaleType="centerInside"
+        android:padding="20dp"/>
+
+    <ImageButton
+        android:id="@+id/A8"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_columnWeight="1"
+        android:layout_rowWeight="1"
+        android:theme="@style/testBtn"
+        android:scaleType="centerInside"
+        android:padding="20dp"/>
+
+    <ImageButton
+        android:id="@+id/A12"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_columnWeight="1"
+        android:layout_rowWeight="1"
+        android:theme="@style/testBtn"
+        android:scaleType="centerInside"
+        android:padding="20dp"/>
+
+    <ImageButton
+        android:id="@+id/A16"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_columnWeight="1"
+        android:layout_rowWeight="1"
+        android:theme="@style/testBtn"
+        android:scaleType="centerInside"
+        android:padding="20dp"/>
+
+</GridLayout>
