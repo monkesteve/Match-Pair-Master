@@ -20,21 +20,18 @@ public class MainActivity extends BaseActivity {
 
     Button start;
     Intent foregroundServiceIntent;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        // Request no title feature before calling super.onCreate()
+
         supportRequestWindowFeature(Window.FEATURE_NO_TITLE);
         super.onCreate(savedInstanceState);
 
-        // Hide the ActionBar if present
         if (getSupportActionBar() != null) {
             getSupportActionBar().hide();
         }
-
-        // Enable full screen
         this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
-
         setContentView(R.layout.activity_main);
 
         start = findViewById(R.id.start);
@@ -43,26 +40,22 @@ public class MainActivity extends BaseActivity {
 
         foregroundServiceIntent = new Intent(this, ForegroundService.class);
         startForegroundService();
-
         sendAppStateToService("APP_OPENED");
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-        // App is visible again
         sendAppStateToService("APP_OPENED");
     }
 
     @Override
     protected void onStop() {
         super.onStop();
-        // This will be called when app goes to background
         sendAppStateToService("APP_CLOSED");
     }
 
     private void startForegroundService() {
-        // Use startForegroundService for Android O and above
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             startForegroundService(foregroundServiceIntent);
         } else {
@@ -134,18 +127,18 @@ public class MainActivity extends BaseActivity {
         alertDialog.show();
     }
 
-    public void scoreBoard(View v){
+    public void scoreBoard(View v) {
         v.startAnimation(AnimationUtils.loadAnimation(this, R.anim.imagebtn));
         Intent myIntent = new Intent(MainActivity.this, ScoreBoard.class);
         startActivity(myIntent);
     }
 
-    public void textlog(View v){
+    public void textlog(View v) {
         v.startAnimation(AnimationUtils.loadAnimation(this, R.anim.imagebtn));
         Toast.makeText(MainActivity.this, "To be implemented", Toast.LENGTH_LONG).show();
     }
 
-    public void testNotif(View v){
+    public void testNotif(View v) {
         v.startAnimation(AnimationUtils.loadAnimation(this, R.anim.imagebtn));
         startForegroundService();
     }
