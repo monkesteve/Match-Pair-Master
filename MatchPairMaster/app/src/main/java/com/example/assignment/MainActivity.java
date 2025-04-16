@@ -40,19 +40,19 @@ public class MainActivity extends BaseActivity {
 
         foregroundServiceIntent = new Intent(this, ForegroundService.class);
         startForegroundService();
-        sendAppStateToService("APP_OPENED");
+//        sendAppStateToService("APP_OPENED");
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-        sendAppStateToService("APP_OPENED");
+//        sendAppStateToService("APP_OPENED");
     }
 
     @Override
     protected void onStop() {
         super.onStop();
-        sendAppStateToService("APP_CLOSED");
+//        sendAppStateToService("APP_CLOSED");
     }
 
     private void startForegroundService() {
