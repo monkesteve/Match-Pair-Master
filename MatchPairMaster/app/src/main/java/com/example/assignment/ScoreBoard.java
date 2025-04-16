@@ -104,7 +104,14 @@ public class ScoreBoard extends BaseActivity {
                 Collections.sort(podiumLogs, new Comparator<TestLog>() {
                     @Override
                     public int compare(TestLog a, TestLog b) {
-                        return Integer.compare(a.moves, b.moves);
+                        int cmp = Integer.compare(b.difficulties, a.difficulties); // difficulties descending
+                        if (cmp == 0) {
+                            cmp = Integer.compare(a.moves, b.moves); // moves ascending
+                            if (cmp == 0) {
+                                cmp = Double.compare(b.duration, a.duration); // duration descending
+                            }
+                        }
+                        return cmp;
                     }
                 });
 
@@ -115,9 +122,9 @@ public class ScoreBoard extends BaseActivity {
 
                 for (int i = 0; i < podium.length; i++) {
                     if (i < podiumLogs.size()) {
-                        podium[i].setText(podiumLogs.get(i).playerName); // player name with least moves
+                        podium[i].setText(podiumLogs.get(i).playerName);
                     } else {
-                        podium[i].setText(""); // clear if no data
+                        podium[i].setText("");
                     }
                 }
 
