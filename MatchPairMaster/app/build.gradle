@@ -15,7 +15,14 @@ android {
     }
 
     buildTypes {
+        Properties properties = new Properties()
+        properties.load(project.rootProject.file('local.properties').newDataInputStream())
+        def chatKey = properties.getProperty("GERMINI_API_KEY")
+        debug {
+            buildConfigField("String", "WAIFU_KEY", chatKey)
+        }
         release {
+            buildConfigField("String", "WAIFU_KEY", chatKey)
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
@@ -41,4 +48,6 @@ dependencies {
 
     implementation platform("com.google.firebase:firebase-bom:32.0.0")
     implementation "com.google.firebase:firebase-database"
+
+    implementation 'com.squareup.okhttp3:okhttp:4.10.0'
 }
