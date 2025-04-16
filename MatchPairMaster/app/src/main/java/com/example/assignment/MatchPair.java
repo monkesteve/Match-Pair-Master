@@ -21,7 +21,9 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.time.ZoneId;
 import java.time.temporal.ChronoUnit;
@@ -30,6 +32,7 @@ import java.util.Collections;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Locale;
 import java.util.Random;
 import java.util.Set;
 import java.util.concurrent.ThreadLocalRandom;
@@ -242,12 +245,18 @@ public class MatchPair extends BaseActivity {
         // end
         mp.release();
         double duration = questionStart.until(LocalTime.now(), ChronoUnit.SECONDS);
+
+        LocalDateTime timestamp = LocalDateTime.now();
+        Date timestampDate = Date.from(timestamp.atZone(ZoneId.systemDefault()).toInstant());
+        SimpleDateFormat sdf = new SimpleDateFormat("EEE MMM dd HH:mm:ss zzz yyyy", Locale.ENGLISH);
+        String formattedDate = sdf.format(timestampDate);
+
         Intent intent = new Intent(MatchPair.this, Finish.class);
         intent.putExtra("testNo", this.testNo);
         intent.putExtra("playerName", this.playerName);
         intent.putExtra("result", this.moves);
         intent.putExtra("duration", duration);
-        intent.putExtra("date", convertToDateViaInstant(startDate).toString());
+        intent.putExtra("date", formattedDate);
         intent.putExtra("difficulties", this.diff);
         startActivity(intent);
         finish();

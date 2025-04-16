@@ -69,11 +69,11 @@ public class ScoreBoard extends BaseActivity {
                 Collections.sort(testLogList, new Comparator<TestLog>() {
                     @Override
                     public int compare(TestLog a, TestLog b) {
-                        int diffCompare = Integer.compare(b.difficulties, a.difficulties);
-                        if (diffCompare != 0) return diffCompare;
-                        int movesCompare = Integer.compare(a.moves, b.moves);
-                        if (movesCompare != 0) return movesCompare;
-                        return Double.compare(b.duration, a.duration);
+                        if (a.testDate == null && b.testDate == null) return 0;
+                        if (a.testDate == null) return 1;
+                        if (b.testDate == null) return -1;
+                        // Compare b to a to have the newest first
+                        return b.testDate.compareTo(a.testDate);
                     }
                 });
 
