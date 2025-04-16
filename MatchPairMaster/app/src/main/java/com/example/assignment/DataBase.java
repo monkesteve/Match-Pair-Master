@@ -90,20 +90,38 @@ public class DataBase {
 
         int i = 0;
         while (cursor.moveToNext()) {
-            String playerName = cursor.getString(cursor.getColumnIndex(TL_COLUMN[1]));
-            String date = cursor.getString(cursor.getColumnIndex(TL_COLUMN[2]));
-            double duration = cursor.getDouble(cursor.getColumnIndex(TL_COLUMN[3]));
-            int moves = cursor.getInt(cursor.getColumnIndex(TL_COLUMN[4]));
-            int diff = cursor.getInt(cursor.getColumnIndex(TL_COLUMN[5]));
+            int playerNameIndex = cursor.getColumnIndex(TL_COLUMN[1]);
+            int dateIndex = cursor.getColumnIndex(TL_COLUMN[2]);
+            int durationIndex = cursor.getColumnIndex(TL_COLUMN[3]);
+            int movesIndex = cursor.getColumnIndex(TL_COLUMN[4]);
+            int diffIndex = cursor.getColumnIndex(TL_COLUMN[5]);
 
-
-            testRecord[i][1] = playerName;
-            if (date != null) {
-                testRecord[i][2] = date.substring(0, 10);
+            if (playerNameIndex >= 0) {
+                String playerName = cursor.getString(playerNameIndex);
+                testRecord[i][1] = playerName;
             }
-            testRecord[i][3] = (int)duration+"s";
-            testRecord[i][4] = moves+"";
-            testRecord[i][5] = diff+"";
+
+            if (dateIndex >= 0) {
+                String date = cursor.getString(dateIndex);
+                if (date != null) {
+                    testRecord[i][2] = date.substring(0, 10);
+                }
+            }
+
+            if (durationIndex >= 0) {
+                double duration = cursor.getDouble(durationIndex);
+                testRecord[i][3] = (int) duration + "s";
+            }
+
+            if (movesIndex >= 0) {
+                int moves = cursor.getInt(movesIndex);
+                testRecord[i][4] = moves + "";
+            }
+
+            if (diffIndex >= 0) {
+                int diff = cursor.getInt(diffIndex);
+                testRecord[i][5] = diff + "";
+            }
 
             if (i >= 19) {
                 break;
