@@ -99,15 +99,23 @@ public class ScoreBoard extends BaseActivity {
                     }
                 }
 
-                // Update podium TextViews (first three entries)
+                // Update podium TextViews
+                ArrayList<TestLog> podiumLogs = new ArrayList<>(testLogList);
+                Collections.sort(podiumLogs, new Comparator<TestLog>() {
+                    @Override
+                    public int compare(TestLog a, TestLog b) {
+                        return Integer.compare(a.moves, b.moves);
+                    }
+                });
+
                 TextView[] podium = new TextView[3];
                 podium[0] = findViewById(R.id.first);
                 podium[1] = findViewById(R.id.second);
                 podium[2] = findViewById(R.id.third);
 
                 for (int i = 0; i < podium.length; i++) {
-                    if (i < dataArray.length) {
-                        podium[i].setText(dataArray[i][1]); // player name
+                    if (i < podiumLogs.size()) {
+                        podium[i].setText(podiumLogs.get(i).playerName); // player name with least moves
                     } else {
                         podium[i].setText(""); // clear if no data
                     }
