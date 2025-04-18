@@ -96,7 +96,17 @@ public class MatchPairGridFragment extends Fragment {
     }
 
     private void ansClick(View view) {
-        mp.start();
+        try {
+            if (mp != null) {
+                mp.start();
+            }
+        } catch (IllegalStateException e) {
+            // Release and recreate the media player if it is in an illegal state
+            mp.release();
+            mp = MediaPlayer.create(getContext(), R.raw.filpsound3);
+            mp.start();
+        }
+
         for (int i = 0; i < buttonAns.length; i++) {
             if (view.getId() == btns[i].getId()) {
                 if (btnIndex == i) return;
@@ -110,7 +120,15 @@ public class MatchPairGridFragment extends Fragment {
         btnTask.setOnFinishShowDigitListener(() -> {
             for (int i = 0; i < buttonAns.length; i++) {
                 if ("done".equals(btns[i].getTag(R.id.tag_status))) {
-                    mp2.start();
+                    try {
+                        if (mp2 != null) {
+                            mp2.start();
+                        }
+                    } catch (IllegalStateException ex) {
+                        mp2.release();
+                        mp2 = MediaPlayer.create(getContext(), R.raw.success);
+                        mp2.start();
+                    }
                     btns[i].setBackground(null);
                     btns[i].setEnabled(false);
                     btns[i].setTag(R.id.tag_status, "");
@@ -118,7 +136,15 @@ public class MatchPairGridFragment extends Fragment {
             }
             for (int i = 0; i < btns.length; i++) {
                 if ("showing".equals(btns[i].getTag(R.id.tag_status))) {
-                    mp.start();
+                    try {
+                        if (mp != null) {
+                            mp.start();
+                        }
+                    } catch (IllegalStateException ex) {
+                        mp.release();
+                        mp = MediaPlayer.create(getContext(), R.raw.filpsound3);
+                        mp.start();
+                    }
                     btns[i].setTag(R.id.tag_status, "");
                     btns[i].animate().rotationYBy(-180);
                 }

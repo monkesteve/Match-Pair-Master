@@ -92,8 +92,13 @@ public class ForegroundService extends Service {
 
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
-        String action = intent.getAction();
+        // Check if intent is null
+        if (intent == null) {
+            updateNotification("We will remind you to play the game");
+            return START_STICKY;
+        }
 
+        String action = intent.getAction();
         if (action != null) {
             switch (action) {
                 case "APP_OPENED":
@@ -103,7 +108,6 @@ public class ForegroundService extends Service {
                     handler.removeCallbacks(delayedNotificationUpdate);
                     updateNotification("We will remind you to play the game");
                     break;
-
                 case "APP_CLOSED":
                     // App is closed/background
                     isAppInForeground = false;
@@ -111,7 +115,6 @@ public class ForegroundService extends Service {
                     handler.removeCallbacks(delayedNotificationUpdate);
                     handler.postDelayed(delayedNotificationUpdate, 10000); // 10 seconds delay
                     break;
-
                 case "BATTERY_UPDATE":
                     int batteryLevel = intent.getIntExtra(BatteryLevelReceiver.EXTRA_BATTERY_LEVEL, -1);
                     if (batteryLevel != -1) {
@@ -123,7 +126,6 @@ public class ForegroundService extends Service {
                     break;
             }
         }
-
         return START_STICKY;
     }
 
